@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/transaction.dart';
 import './transaction.dart';
+import './login.dart';
+import 'package:intl/intl.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+void main() => runApp(Login());
 
 class MyApp extends StatelessWidget {
   @override
@@ -30,6 +32,10 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  void handleInput() {
+    print('Input!!!');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -46,6 +52,29 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text('CHART!'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        handleInput();
+                      },
+                      child: Text('Add transaction'),
+                      textColor: Colors.purple,
+                    )
+                  ]),
             ),
           ),
           Column(
@@ -63,7 +92,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount.toString()}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -82,7 +111,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          tx.date.toString(),
+                          DateFormat().format(tx.date),
                           style: TextStyle(
                             color: Colors.grey,
                           ),

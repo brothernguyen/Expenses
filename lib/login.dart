@@ -31,8 +31,11 @@ class MyHomePage extends StatelessWidget {
   ];
 
   void handleInput() {
-    print('Input!!!');
+    print(emailController.text);
   }
+
+  final emailController = TextEditingController();
+  final pinController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,8 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Card(
-            elevation: 5,
+            //elevation: 20,
+            borderOnForeground: false,
             child: Container(
               padding: EdgeInsets.all(10),
               child: Column(
@@ -60,9 +64,11 @@ class MyHomePage extends StatelessWidget {
                   children: <Widget>[
                     TextField(
                       decoration: InputDecoration(labelText: 'Email'),
+                      controller: emailController,
                     ),
                     TextField(
                       decoration: InputDecoration(labelText: 'PIN'),
+                      controller: pinController,
                     ),
                     const SizedBox(height: 30),
                     ElevatedButton(
@@ -73,7 +79,9 @@ class MyHomePage extends StatelessWidget {
                         ),
                         primary: Colors.deepOrange,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        handleInput();
+                      },
                       child: const Text('LOG IN'),
                     ),
                     const SizedBox(height: 5),
@@ -88,55 +96,43 @@ class MyHomePage extends StatelessWidget {
                       onPressed: () {},
                       child: const Text('JOIN OURS EXPERTS'),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 15,
+                          ),
+                          padding: EdgeInsets.all(2),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Help'),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 15,
+                          ),
+                          padding: EdgeInsets.all(2),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Forgot PIN'),
+                          ),
+                        ),
+                      ],
+                    ),
                   ]),
             ),
           ),
-          // Column(
-          //   children: transaction.map((tx) {
-          //     return Card(
-          //       child: Row(
-          //         children: <Widget>[
-          //           Container(
-          //             margin: EdgeInsets.symmetric(
-          //               vertical: 10,
-          //               horizontal: 15,
-          //             ),
-          //             decoration: BoxDecoration(
-          //               border: Border.all(color: Colors.black, width: 2),
-          //             ),
-          //             padding: EdgeInsets.all(10),
-          //             child: Text(
-          //               '\$${tx.amount.toString()}',
-          //               style: TextStyle(
-          //                 fontWeight: FontWeight.bold,
-          //                 fontSize: 20,
-          //                 color: Colors.purple,
-          //               ),
-          //             ),
-          //           ),
-          //           Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: <Widget>[
-          //               Text(
-          //                 tx.title,
-          //                 style: TextStyle(
-          //                   fontSize: 16,
-          //                   fontWeight: FontWeight.bold,
-          //                 ),
-          //               ),
-          //               Text(
-          //                 DateFormat().format(tx.date),
-          //                 style: TextStyle(
-          //                   color: Colors.grey,
-          //                 ),
-          //               )
-          //             ],
-          //           ),
-          //         ],
-          //       ),
-          //     );
-          //   }).toList(),
-          // ),
+          //Column(
         ],
       ),
     );

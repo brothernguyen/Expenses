@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/transaction.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import './transaction.dart';
 
@@ -15,31 +16,26 @@ class Login extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transaction = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.85,
-      date: DateTime.now(),
-    ),
-  ];
+  final emailController = TextEditingController();
+  final pinController = TextEditingController();
 
   void handleInput() {
     print(emailController.text);
   }
 
-  final emailController = TextEditingController();
-  final pinController = TextEditingController();
+  _launchForgotPinURLBrowser() async {
+    const url = 'https://www.vidlet.com/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -55,8 +51,6 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Card(
                 elevation: 0,
@@ -127,7 +121,9 @@ class MyHomePage extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   textStyle: const TextStyle(fontSize: 14),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  _launchForgotPinURLBrowser();
+                                },
                                 child: const Text('Forgot PIN'),
                               ),
                             ),

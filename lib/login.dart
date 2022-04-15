@@ -41,6 +41,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -51,89 +52,93 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Card(
-            //elevation: 20,
-            borderOnForeground: false,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    TextField(
-                      decoration: InputDecoration(labelText: 'Email'),
-                      controller: emailController,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(labelText: 'PIN'),
-                      controller: pinController,
-                    ),
-                    const SizedBox(height: 30),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        primary: Colors.deepOrange,
-                      ),
-                      onPressed: () {
-                        handleInput();
-                      },
-                      child: const Text('LOG IN'),
-                    ),
-                    const SizedBox(height: 5),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        primary: Color(0xFF660033),
-                      ),
-                      onPressed: () {},
-                      child: const Text('JOIN OURS EXPERTS'),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Card(
+                elevation: 0,
+                borderOnForeground: false,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 15,
-                          ),
-                          padding: EdgeInsets.all(2),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              textStyle: const TextStyle(fontSize: 14),
-                            ),
-                            onPressed: () {},
-                            child: const Text('Help'),
-                          ),
+                        TextField(
+                          decoration: InputDecoration(labelText: 'Email'),
+                          controller: emailController,
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 15,
-                          ),
-                          padding: EdgeInsets.all(2),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              textStyle: const TextStyle(fontSize: 14),
-                            ),
-                            onPressed: () {},
-                            child: const Text('Forgot PIN'),
-                          ),
+                        TextField(
+                          decoration: InputDecoration(labelText: 'PIN'),
+                          controller: pinController,
                         ),
-                      ],
-                    ),
-                  ]),
-            ),
+                        const SizedBox(height: 30),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            primary: Colors.deepOrange,
+                          ),
+                          onPressed: () {
+                            handleInput();
+                          },
+                          child: const Text('LOG IN'),
+                        ),
+                        const SizedBox(height: 5),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            primary: Color(0xFF660033),
+                          ),
+                          onPressed: () {},
+                          child: const Text('JOIN OURS EXPERTS'),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
+                              padding: EdgeInsets.all(2),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 14),
+                                ),
+                                onPressed: () {},
+                                child: const Text('Help'),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
+                              padding: EdgeInsets.all(2),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  textStyle: const TextStyle(fontSize: 14),
+                                ),
+                                onPressed: () {},
+                                child: const Text('Forgot PIN'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ]),
+                ),
+              ),
+            ],
           ),
-          //Column(
-        ],
+        ),
       ),
     );
   }

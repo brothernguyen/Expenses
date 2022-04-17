@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/transaction.dart';
+import './mainScreen.dart';
+//import 'package:flutter_complete_guide/transaction.dart';
 //import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,17 +11,21 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      home: MyHomePage(),
+      home: LoginForm(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class LoginForm extends StatelessWidget {
   final emailController = TextEditingController();
   final pinController = TextEditingController();
+  LoginForm({Key key}) : super(key: key);
 
-  void handleInput() {
-    print(emailController.text);
+  void handleInput(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MainScreen()),
+    );
   }
 
   _launchForgotPinURLBrowser() async {
@@ -78,7 +83,7 @@ class MyHomePage extends StatelessWidget {
                             primary: Colors.deepOrange,
                           ),
                           onPressed: () {
-                            handleInput();
+                            handleInput(context);
                           },
                           child: const Text('LOG IN'),
                         ),

@@ -67,10 +67,12 @@ class LoginForm extends StatelessWidget {
                       children: <Widget>[
                         TextField(
                           decoration: InputDecoration(labelText: 'Email'),
+                          keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                         ),
                         TextField(
                           decoration: InputDecoration(labelText: 'PIN'),
+                          keyboardType: TextInputType.number,
                           controller: pinController,
                         ),
                         const SizedBox(height: 30),

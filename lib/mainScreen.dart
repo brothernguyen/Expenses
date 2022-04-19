@@ -11,6 +11,38 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Data Question'),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Text(
+                'vidlet',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontSize: 26,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.message),
+              title: Text('Messages'),
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Profile'),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ],
+        ),
+      ),
       body: Center(child: _buildList()
           // child: ElevatedButton(
           //   onPressed: () {
@@ -45,9 +77,9 @@ class MainScreen extends StatelessWidget {
     return ListTile(
       title: Text(title,
           style: const TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 20,
-          )),
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+              color: Colors.black87)),
       subtitle: Text(subtitle),
     );
   }

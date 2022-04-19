@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import './login.dart';
+import './script.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key key}) : super(key: key);
+  MainScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,72 +23,25 @@ class MainScreen extends StatelessWidget {
   }
 
   Widget _buildList() {
-    return ListView(
-      children: [
-        _tile('CineArts at the Empire', '85 W Portal Ave', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('The Castro Theater', '429 Castro St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Alamo Drafthouse Cinema', '2550 Mission St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Roxie Theater', '3117 16th St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('United Artists Stonestown Twin', '501 Buckingham Way',
-            Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('AMC Metreon 16', '135 4th St #3000', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('K\'s Kitchen', '757 Monterey Blvd', Icons.restaurant),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Emmy\'s Restaurant', '1923 Ocean Ave', Icons.restaurant),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Chaiya Thai Restaurant', '272 Claremont Blvd', Icons.restaurant),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('La Ciccia', '291 30th St', Icons.restaurant),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('CineArts at the Empire', '85 W Portal Ave', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('The Castro Theater', '429 Castro St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Alamo Drafthouse Cinema', '2550 Mission St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('Roxie Theater', '3117 16th St', Icons.theaters),
-        const Divider(
-          thickness: 2.0,
-        ),
-        _tile('United Artists Stonestown Twin', '501 Buckingham Way',
-            Icons.theaters),
-      ],
-    );
+    return ListView.builder(
+        itemCount: scripts.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: [
+              _tile(scripts[index].title, scripts[index].subTitle),
+              const Divider(
+                height: 20,
+                thickness: 1,
+                indent: 20,
+                endIndent: 20,
+                color: Colors.blue,
+              ),
+            ],
+          );
+        });
   }
 
-  ListTile _tile(String title, String subtitle, IconData icon) {
+  ListTile _tile(String title, String subtitle) {
     return ListTile(
       title: Text(title,
           style: const TextStyle(
@@ -95,10 +49,109 @@ class MainScreen extends StatelessWidget {
             fontSize: 20,
           )),
       subtitle: Text(subtitle),
-      leading: Icon(
-        icon,
-        color: Colors.blue[500],
-      ),
     );
   }
+
+  List<Script> scripts = [
+    Script(
+      id: '1',
+      title: 'CineArts at the Empire',
+      subTitle: '85 W Portal Ave',
+    ),
+    Script(
+      id: '2',
+      title: 'The Castro Theater',
+      subTitle: '429 Castro St',
+    ),
+    Script(
+      id: '3',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '4',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '5',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '6',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '7',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '8',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '9',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '10',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '11',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '12',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '13',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '14',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '15',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '16',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '17',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '18',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '19',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+    Script(
+      id: '20',
+      title: 'Alamo Drafthouse Cinema',
+      subTitle: '2550 Mission St',
+    ),
+  ];
 }

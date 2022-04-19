@@ -24,7 +24,7 @@ class LoginForm extends StatelessWidget {
   void handleInput(context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MainScreen()),
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
   }
 

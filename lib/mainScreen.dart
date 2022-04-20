@@ -14,18 +14,14 @@ class MainScreen extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
-              child: Text(
-                'vidlet',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.deepOrange,
-                  fontSize: 26,
-                ),
+              child: Image.asset(
+                'assets/images/logo-vidlet-butterfly.png',
+                scale: 1.2,
               ),
             ),
             ListTile(

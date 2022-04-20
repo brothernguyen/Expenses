@@ -45,13 +45,7 @@ class LoginForm extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
-          'vidlet',
-          style: TextStyle(
-            color: Colors.deepOrange,
-            fontSize: 24,
-          ),
-        ),
+        title: Image.asset('assets/images/logo-vidlet-butterfly.png'),
       ),
       body: Container(
         child: SingleChildScrollView(

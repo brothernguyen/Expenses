@@ -11,32 +11,35 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Data Question'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.white,
+      drawer: Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Image.asset(
+                  'assets/images/logo-vidlet-butterfly.png',
+                  scale: 1.2,
+                ),
               ),
-              child: Image.asset(
-                'assets/images/logo-vidlet-butterfly.png',
-                scale: 1.2,
+              ListTile(
+                leading: Icon(Icons.message),
+                title: Text('Messages'),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('Profile'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+              ),
+            ],
+          ),
         ),
       ),
       body: Center(child: _buildList()
@@ -47,6 +50,19 @@ class MainScreen extends StatelessWidget {
           //   child: const Text('Log out'),
           // ),
           ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy_outlined),
+            label: 'Scripts',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.checklist_outlined),
+            label: 'Completed',
+          ),
+        ],
+        selectedItemColor: Colors.amber[800],
+      ),
     );
   }
 
@@ -77,6 +93,7 @@ class MainScreen extends StatelessWidget {
               fontSize: 20,
               color: Colors.black87)),
       subtitle: Text(subtitle),
+      trailing: Icon(Icons.arrow_forward),
     );
   }
 

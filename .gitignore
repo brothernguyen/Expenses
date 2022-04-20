@@ -1,0 +1,638 @@
+# Miscellaneous
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
+
+# Flutter repo-specific
+/bin/cache/
+/bin/internal/bootstrap.bat
+/bin/internal/bootstrap.sh
+/bin/mingit/
+/dev/benchmarks/mega_gallery/
+/dev/bots/.recipe_deps
+/dev/bots/android_tools/
+/dev/devicelab/ABresults*.json
+/dev/docs/doc/
+/dev/docs/flutter.docs.zip
+/dev/docs/lib/
+/dev/docs/pubspec.yaml
+/dev/integration_tests/**/xcuserdata
+/dev/integration_tests/**/Pods
+/packages/flutter/coverage/
+version
+analysis_benchmark.json
+
+# packages file containing multi-root paths
+.packages.generated
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+
+# Android related
+**/android/**/gradle-wrapper.jar
+.gradle/
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/android/key.properties
+*.jks
+
+# iOS/XCode related
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata
+**/ios/.generated/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/ephemeral
+
+# Coverage
+coverage/
+
+# Symbols
+app.*.symbols
+
+# Exceptions to above rules.
+!**/ios/**/default.mode1v3
+!**/ios/**/default.mode2v3
+!**/ios/**/default.pbxuser
+!**/ios/**/default.perspectivev3
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/dev/ci/**/Gemfile.lock
+
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/.filecache
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/app.dill
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/debug_android_application.stamp
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/flutter_assets.d
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/gen_dart_plugin_registrant.stamp
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/gen_localizations.stamp
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/kernel_snapshot.d
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/kernel_snapshot.stamp
+.dart_tool/flutter_build/94682f71b4a501bb2066ef134ae3071e/outputs.json
+build/c075001b96339384a97db4862b8ab8db.cache.dill.track 2.dill
+build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
+build/app/generated/source/buildConfig/debug/com/example/my_app/BuildConfig 2.java
+build/app/intermediates/annotation_processor_list/debug/annotationProcessors 2.json
+build/app/intermediates/compatible_screen_manifest/debug/output-metadata 2.json
+build/app/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.json 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/FontManifest.json 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/isolate_snapshot_data 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/NOTICES.Z 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/vm_snapshot_data 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/MaterialIcons-Regular.otf 2.jar
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf 2.jar
+build/app/intermediates/dex/debug/mergeDexDebug/classes 2.dex
+build/app/intermediates/external_libs_dex/debug/mergeExtDexDebug/classes 2.dex
+build/app/intermediates/flutter/debug/.last_build_id 2
+build/app/intermediates/flutter/debug/flutter_build 2.d
+build/app/intermediates/flutter/debug/libs 2.jar
+build/app/intermediates/flutter/debug/flutter_assets/AssetManifest 2.json
+build/app/intermediates/flutter/debug/flutter_assets/FontManifest 2.json
+build/app/intermediates/flutter/debug/flutter_assets/isolate_snapshot_data 2
+build/app/intermediates/flutter/debug/flutter_assets/kernel_blob 2.bin
+build/app/intermediates/flutter/debug/flutter_assets/NOTICES 2.Z
+build/app/intermediates/flutter/debug/flutter_assets/vm_snapshot_data 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/+x5eZqAkZP+JKgubR4y1C5jTT5A= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/19YYJPAyMW6tjPi5zmPmNCFcev0= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/3S2x3MkhaDD22MoNrmvtZ3VXCpI= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/5KMEu5bvoxf4wge4ctfRa1_zVN8= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/74dflCGpzHfKZsz2Z3gqN6f_lzM= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/7DYCG6g+PHceltlrxc6MHCWayho= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/9QNXdIUDjoVWK9qifVU4Tf2VrE8= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/_N_yOqcYOSj7ALxg1J2R6uHmTlM= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/agLbsYA5pvsFDP6seOHOOi54clA= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/bwCt7CFGSYSjxMGUhBOQO1FfZDk= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/DY3EQR35lcB+_3MQvUcwbPNilnE= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/ek1xjRWuiI8iWZ51YzoZLlcdGo4= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/F7v5mqhNAkqjmViht73m+UBv1pk= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/GobaFOEgRJFy_j2yvTBXN+Vd9iQ= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/h37oYne6RVjQZ1+I3BnTePhLb3A=
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/jC5oQSvUf_RtqQre42ipkHj18LE= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/kSY0vSbX7vmaOodA6R2xcE7KP8c= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/L5Mq4Y+28DXAFUb3oQMMZopnxcI= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/ljmbXO+A1RoURwqGiwXIFcQB5Wo= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/MP5FuYhVvk8kWtjVqwoHMMh+g4Y= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/mYlgSeL71hbVAaq1ZkIuDrOZrmI= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/NrAwSV2vGIMKA4sQbekQw0zGulc= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/p4suINOiian41LZ_1in56FYdUm4= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/quY3twqCHc3M5ITyk0K0s7rbGKg= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/RKGmz3HEK7eFSek6Mzlto5BvNI0= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/Royw7xsl6T+vH0N8poou6XnVPZI= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/TDrt_rlyQ1ftsoohMRG0TOjI_EQ= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/uRO+wTvBJ5KWyhh4XfL64QVrWKM= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/wfoTdAwLOkgw9QRgXUPAkROcyB0= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/Wyx9Wnod07v3NSX3DK5H7u3Go9U= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/X8vwErQZQspvsl0EStU3QmpCsYI= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/xvEBMJp6z9boYeuY_OgU7eUCUZk= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/ZeTFN+AVRh4IdChEuDtnTJfjKPQ= 2
+build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/ZhHwDqlZSigjRqEtyax0Dd0BF9w= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/+x5eZqAkZP+JKgubR4y1C5jTT5A= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/19YYJPAyMW6tjPi5zmPmNCFcev0= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/3S2x3MkhaDD22MoNrmvtZ3VXCpI= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/5KMEu5bvoxf4wge4ctfRa1_zVN8= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/74dflCGpzHfKZsz2Z3gqN6f_lzM= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/7DYCG6g+PHceltlrxc6MHCWayho= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/9QNXdIUDjoVWK9qifVU4Tf2VrE8= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/_N_yOqcYOSj7ALxg1J2R6uHmTlM= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/agLbsYA5pvsFDP6seOHOOi54clA= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/bwCt7CFGSYSjxMGUhBOQO1FfZDk= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/DY3EQR35lcB+_3MQvUcwbPNilnE= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/ek1xjRWuiI8iWZ51YzoZLlcdGo4= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/F7v5mqhNAkqjmViht73m+UBv1pk= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/GobaFOEgRJFy_j2yvTBXN+Vd9iQ= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/h37oYne6RVjQZ1+I3BnTePhLb3A=
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/jC5oQSvUf_RtqQre42ipkHj18LE= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/kSY0vSbX7vmaOodA6R2xcE7KP8c= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/L5Mq4Y+28DXAFUb3oQMMZopnxcI= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/ljmbXO+A1RoURwqGiwXIFcQB5Wo= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/MP5FuYhVvk8kWtjVqwoHMMh+g4Y= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/mYlgSeL71hbVAaq1ZkIuDrOZrmI= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/NrAwSV2vGIMKA4sQbekQw0zGulc= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/p4suINOiian41LZ_1in56FYdUm4= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/quY3twqCHc3M5ITyk0K0s7rbGKg= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/RKGmz3HEK7eFSek6Mzlto5BvNI0= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/Royw7xsl6T+vH0N8poou6XnVPZI= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/TDrt_rlyQ1ftsoohMRG0TOjI_EQ= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/uRO+wTvBJ5KWyhh4XfL64QVrWKM= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/wfoTdAwLOkgw9QRgXUPAkROcyB0= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/Wyx9Wnod07v3NSX3DK5H7u3Go9U= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/X8vwErQZQspvsl0EStU3QmpCsYI= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/xvEBMJp6z9boYeuY_OgU7eUCUZk= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/ZeTFN+AVRh4IdChEuDtnTJfjKPQ= 2
+build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/ZhHwDqlZSigjRqEtyax0Dd0BF9w= 2
+build/app/intermediates/incremental/mergeDebugAssets/merger 2.xml
+build/app/intermediates/incremental/mergeDebugJniLibFolders/merger 2.xml
+build/app/intermediates/incremental/mergeDebugResources/compile-file-map 2.properties
+build/app/intermediates/incremental/mergeDebugResources/merger 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-af/values-af 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-am/values-am 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-b+sr+Latn/values-b+sr+Latn 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-be/values-be 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-bg/values-bg 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-bs/values-bs 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-cs/values-cs 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-da/values-da 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-el/values-el 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rAU/values-en-rAU 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rIN/values-en-rIN 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-es/values-es 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rUS/values-es-rUS 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-eu/values-eu 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fa/values-fa 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fr/values-fr 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-gl/values-gl 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-gu/values-gu 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hy/values-hy 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-in/values-in 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-is/values-is 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ja/values-ja 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ka/values-ka 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-kk/values-kk 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-km/values-km 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-kn/values-kn 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ky/values-ky 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-lo/values-lo 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-lt/values-lt 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-lv/values-lv 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mn/values-mn 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mr/values-mr 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ms/values-ms 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-my/values-my 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-nb/values-nb 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-or/values-or 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-pl/values-pl 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-pt/values-pt 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR/values-pt-rBR 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ro/values-ro 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ru/values-ru 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sk/values-sk 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sl/values-sl 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sv/values-sv 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sw/values-sw 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-te/values-te 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-tl/values-tl 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-tr/values-tr 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-uk/values-uk 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-vi/values-vi 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rHK/values-zh-rHK 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW 2.xml
+build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zu/values-zu 2.xml
+build/app/intermediates/incremental/mergeDebugShaders/merger 2.xml
+build/app/intermediates/javac/debug/classes/com/example/my_app/BuildConfig 2.class
+build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant 2.class
+build/app/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report 2.txt
+build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest 2.json
+build/app/intermediates/merged_assets/debug/out/flutter_assets/FontManifest 2.json
+build/app/intermediates/merged_assets/debug/out/flutter_assets/isolate_snapshot_data 2
+build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob 2.bin
+build/app/intermediates/merged_assets/debug/out/flutter_assets/NOTICES 2.Z
+build/app/intermediates/merged_assets/debug/out/flutter_assets/vm_snapshot_data 2
+build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/MaterialIcons-Regular 2.otf
+build/app/intermediates/merged_assets/debug/out/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons 2.ttf
+build/app/intermediates/merged_java_res/debug/out 2.jar
+build/app/intermediates/merged_manifest/debug/out/AndroidManifest 2.xml
+build/app/intermediates/merged_manifests/debug/AndroidManifest 2.xml
+build/app/intermediates/merged_manifests/debug/output-metadata 2.json
+build/app/intermediates/merged_native_libs/debug/out/lib/arm64-v8a/libflutter 2.so
+build/app/intermediates/merged_native_libs/debug/out/lib/x86/libflutter 2.so
+build/app/intermediates/merged_native_libs/debug/out/lib/x86_64/libflutter 2.so
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-af 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-am 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ar 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-as 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-az 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-b+sr+Latn 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-be 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-bg 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-bn 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-bs 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ca 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-cs 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-da 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-de 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-el 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-en-rAU 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-en-rCA 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-en-rGB 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-en-rIN 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-en-rXC 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-es 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-es-rUS 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-et 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-eu 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-fa 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-fi 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-fr 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-fr-rCA 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-gl 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-gu 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-hi 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-hr 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-hu 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-hy 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-in 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-is 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-it 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-iw 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ja 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ka 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-kk 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-km 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-kn 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ko 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ky 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-lo 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-lt 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-lv 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-mk 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ml 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-mn 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-mr 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ms 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-my 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-nb 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ne 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-nl 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-or 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-pa 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-pl 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-pt 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-pt-rBR 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-pt-rPT 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ro 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ru 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-si 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sk 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sl 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sq 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sr 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sv 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-sw 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ta 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-te 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-th 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-tl 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-tr 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-uk 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-ur 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-uz 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-v16 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-v21 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-vi 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zh-rCN 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zh-rHK 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zh-rTW 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zu 2.json
+build/app/intermediates/merged_res_blame_folder/debug/out/single/debug 2.json
+build/app/intermediates/packaged_manifests/debug/AndroidManifest 2.xml
+build/app/intermediates/packaged_manifests/debug/output-metadata 2.json
+build/app/intermediates/processed_res/debug/out/output-metadata 2.json
+build/app/intermediates/processed_res/debug/out/resources-debug 2.ap_
+build/app/intermediates/project_dex_archive/debug/out/c2feac895cb68214a585c9142203dcd4dc89dbaee4dfd7924d3e731725182823_0 2.jar
+build/app/intermediates/project_dex_archive/debug/out/c2feac895cb68214a585c9142203dcd4dc89dbaee4dfd7924d3e731725182823_1 2.jar
+build/app/intermediates/project_dex_archive/debug/out/c2feac895cb68214a585c9142203dcd4dc89dbaee4dfd7924d3e731725182823_2 2.jar
+build/app/intermediates/project_dex_archive/debug/out/c2feac895cb68214a585c9142203dcd4dc89dbaee4dfd7924d3e731725182823_3 2.jar
+build/app/intermediates/project_dex_archive/debug/out/com/example/my_app/BuildConfig 2.dex
+build/app/intermediates/project_dex_archive/debug/out/com/example/my_app/MainActivity 2.dex
+build/app/intermediates/project_dex_archive/debug/out/io/flutter/plugins/GeneratedPluginRegistrant 2.dex
+build/app/intermediates/res/merged/debug/drawable-v21_launch_background.xml 2.flat
+build/app/intermediates/res/merged/debug/drawable_launch_background.xml 2.flat
+build/app/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png 2.flat
+build/app/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png 2.flat
+build/app/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png 2.flat
+build/app/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png 2.flat
+build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png 2.flat
+build/app/intermediates/res/merged/debug/values-af_values-af.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-am_values-am.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ar_values-ar.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-as_values-as.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-az_values-az.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-b+sr+Latn_values-b+sr+Latn.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-be_values-be.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-bg_values-bg.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-bn_values-bn.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-bs_values-bs.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ca_values-ca.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-cs_values-cs.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-da_values-da.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-de_values-de.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-el_values-el.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-en-rCA_values-en-rCA.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-en-rGB_values-en-rGB.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-en-rIN_values-en-rIN.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-en-rXC_values-en-rXC.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-es-rUS_values-es-rUS.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-es_values-es.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-et_values-et.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-eu_values-eu.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-fa_values-fa.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-fi_values-fi.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-fr-rCA_values-fr-rCA.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-fr_values-fr.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-gl_values-gl.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-gu_values-gu.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-hi_values-hi.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-hr_values-hr.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-hu_values-hu.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-hy_values-hy.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-in_values-in.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-is_values-is.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-it_values-it.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-iw_values-iw.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ja_values-ja.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ka_values-ka.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-kk_values-kk.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-km_values-km.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-kn_values-kn.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ko_values-ko.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ky_values-ky.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-lo_values-lo.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-lt_values-lt.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-lv_values-lv.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-mk_values-mk.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ml_values-ml.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-mn_values-mn.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-mr_values-mr.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ms_values-ms.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-my_values-my.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-nb_values-nb.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ne_values-ne.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-night-v8_values-night-v8.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-nl_values-nl.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-or_values-or.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-pa_values-pa.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-pl_values-pl.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-pt-rBR_values-pt-rBR.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-pt-rPT_values-pt-rPT.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-pt_values-pt.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ro_values-ro.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ru_values-ru.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-si_values-si.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sk_values-sk.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sl_values-sl.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sq_values-sq.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sr_values-sr.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sv_values-sv.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-sw_values-sw.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ta_values-ta.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-te_values-te.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-th_values-th.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-tl_values-tl.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-tr_values-tr.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-uk_values-uk.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-ur_values-ur.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-uz_values-uz.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-v16_values-v16.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-v21_values-v21.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-vi_values-vi.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-zh-rCN_values-zh-rCN.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-zh-rHK_values-zh-rHK.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-zh-rTW_values-zh-rTW.arsc 2.flat
+build/app/intermediates/res/merged/debug/values-zu_values-zu.arsc 2.flat
+build/app/intermediates/res/merged/debug/values_values.arsc 2.flat
+build/app/intermediates/runtime_symbol_list/debug/R 2.txt
+build/app/intermediates/stripped_native_libs/debug/out/lib/arm64-v8a/libflutter 2.so
+build/app/intermediates/stripped_native_libs/debug/out/lib/x86/libflutter 2.so
+build/app/intermediates/stripped_native_libs/debug/out/lib/x86_64/libflutter 2.so
+build/app/intermediates/symbol_list_with_package_name/debug/package-aware-r 2.txt
+build/app/kotlin/compileDebugKotlin/build-history 2.bin
+build/app/kotlin/compileDebugKotlin/last-build 2.bin
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/inputs/source-to-output.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-attributes.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/proto.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/subtypes.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/jvm/kotlin/supertypes.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/counters 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/file-to-id.tab_i 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/id-to-file 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/id-to-file.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/id-to-file.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/id-to-file.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/id-to-file.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups 2.tab
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups 2.tab_i
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups.tab 2.keystream
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups.tab 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups.tab.keystream 2.len
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups.tab.values 2.at
+build/app/kotlin/compileDebugKotlin/caches-jvm/lookups/lookups.tab_i 2.len
+build/app/outputs/apk/debug/app-debug 2.apk
+build/app/outputs/apk/debug/output-metadata 2.json
+build/app/outputs/flutter-apk/app 2.apk
+build/app/outputs/logs/manifest-merger-debug-report 2.txt
+build/ios/Debug-iphonesimulator/.last_build_id
+build/ios/Debug-iphonesimulator/App.framework/App
+build/ios/Debug-iphonesimulator/App.framework/_CodeSignature/CodeResources
+build/ios/Debug-iphonesimulator/App.framework/flutter_assets/kernel_blob.bin
+build/ios/Debug-iphonesimulator/Flutter.framework/Flutter
+build/ios/Debug-iphonesimulator/Runner.app/Runner
+build/ios/Debug-iphonesimulator/Runner.app/_CodeSignature/CodeResources
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/App.framework/App
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/App.framework/_CodeSignature/CodeResources
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/kernel_blob.bin
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/Flutter.framework/Flutter
+build/ios/Debug-iphonesimulator/Runner.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+build/ios/Debug-iphonesimulator/Runner.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+build/ios/iphonesimulator/Runner.app/Runner
+build/ios/iphonesimulator/Runner.app/_CodeSignature/CodeResources
+build/ios/iphonesimulator/Runner.app/Frameworks/App.framework/App
+build/ios/iphonesimulator/Runner.app/Frameworks/App.framework/_CodeSignature/CodeResources
+build/ios/iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/kernel_blob.bin
+build/ios/iphonesimulator/Runner.app/Frameworks/Flutter.framework/Flutter

@@ -28,16 +28,21 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.message),
-                title: Text('Messages'),
+                trailing: Switch(value: false, onChanged: (value) {}),
+                title: Text('WiFi only'),
               ),
               ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Profile'),
+                trailing: Switch(value: false, onChanged: (value) {}),
+                title: Text('HD Video'),
               ),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                title: Text('Support'),
+              ),
+              ListTile(
+                title: Text('Private Policy'),
+              ),
+              ListTile(
+                title: Text('Logout'),
               ),
             ],
           ),

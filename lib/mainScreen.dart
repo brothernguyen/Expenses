@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import './login.dart';
+//import './login.dart';
 import './script.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   MainScreen({Key key}) : super(key: key);
 

@@ -4,7 +4,7 @@ import './mainScreen.dart';
 //import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import './transaction.dart';
+//import './transaction.dart';
 
 class Login extends StatelessWidget {
   @override

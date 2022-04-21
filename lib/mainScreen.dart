@@ -9,9 +9,15 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Data Question'),
-      ),
+      appBar: AppBar(title: const Text('Data Question'), actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.power_settings_new),
+          tooltip: 'Log out',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ]),
       drawer: Container(
         width: MediaQuery.of(context).size.width * 0.9,
         child: Drawer(

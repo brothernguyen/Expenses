@@ -10,6 +10,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter App',
       home: LoginForm(),
     );
@@ -35,6 +36,71 @@ class LoginForm extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  showHelpDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Need help?'),
+            actions: [
+              Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.bug_report_rounded,
+                              size: 20, color: Colors.blue),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                              textStyle: TextStyle(fontSize: 14),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Report a bug',
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.lightbulb_outline,
+                              size: 20, color: Colors.blue),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                              textStyle: TextStyle(fontSize: 14),
+                            ),
+                            onPressed: () {},
+                            child: Text('Suggest an improvement'),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.question_mark_rounded,
+                              size: 20, color: Colors.blue),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                              textStyle: TextStyle(fontSize: 14),
+                            ),
+                            onPressed: () {},
+                            child: Text('Ask a question'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -108,7 +174,9 @@ class LoginForm extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   textStyle: const TextStyle(fontSize: 14),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  showHelpDialog(context);
+                                },
                                 child: const Text('Help'),
                               ),
                             ),

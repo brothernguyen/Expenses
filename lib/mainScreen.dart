@@ -19,61 +19,60 @@ class MainScreen extends StatelessWidget {
         ),
       ]),
       drawer: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        child: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Image.asset(
-                  'assets/images/logo-vidlet-butterfly.png',
-                  scale: 1.2,
-                ),
-              ),
-              ListTile(
-                trailing: Switch(value: false, onChanged: (value) {}),
-                title: Text('WiFi only'),
-              ),
-              ListTile(
-                trailing: Switch(value: false, onChanged: (value) {}),
-                title: Text('HD Video'),
-              ),
-              ListTile(
-                title: Text('Support'),
-              ),
-              ListTile(
-                title: Text('Private Policy'),
-              ),
-              ListTile(
-                title: Text('Logout'),
-              ),
-            ],
-          ),
+          width: MediaQuery.of(context).size.width * 0.9, child: _drawer()),
+      body: Center(child: _buildList()),
+      bottomNavigationBar: _bottomBar(),
+    );
+  }
+
+  Widget _bottomBar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.file_copy_outlined),
+          label: 'Scripts',
         ),
-      ),
-      body: Center(child: _buildList()
-          // child: ElevatedButton(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          //   child: const Text('Log out'),
-          // ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.checklist_outlined),
+          label: 'Completed',
+        ),
+      ],
+      selectedItemColor: Colors.amber[800],
+    );
+  }
+
+  Widget _drawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Image.asset(
+              'assets/images/logo-vidlet-butterfly.png',
+              scale: 1.2,
+            ),
           ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy_outlined),
-            label: 'Scripts',
+          ListTile(
+            trailing: Switch.adaptive(value: true, onChanged: (value) {}),
+            title: Text('WiFi only'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.checklist_outlined),
-            label: 'Completed',
+          ListTile(
+            trailing: Switch.adaptive(value: true, onChanged: (value) {}),
+            title: Text('HD Video'),
+          ),
+          ListTile(
+            title: Text('Support'),
+          ),
+          ListTile(
+            title: Text('Private Policy'),
+          ),
+          ListTile(
+            title: Text('Logout'),
           ),
         ],
-        selectedItemColor: Colors.amber[800],
       ),
     );
   }

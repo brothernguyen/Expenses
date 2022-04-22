@@ -113,7 +113,7 @@ class LoginForm extends StatelessWidget {
         centerTitle: true,
         title: Image.asset('assets/images/logo-vidlet-butterfly.png'),
       ),
-      body: Container(
+      body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[

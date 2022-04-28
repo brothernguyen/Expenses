@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 //import './login.dart';
 import './script.dart';
 
@@ -8,16 +12,38 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PreferredSizeWidget appBar = Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: Text('Data Question'),
+            automaticallyImplyLeading: false,
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                GestureDetector(
+                  child: Icon(
+                    CupertinoIcons.power,
+                    color: Colors.grey,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.end,
+            ),
+          )
+        : AppBar(title: const Text('Data Question'), actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.power_settings_new),
+              tooltip: 'Log out',
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ]);
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Data Question'), actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.power_settings_new),
-          tooltip: 'Log out',
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ]),
+      appBar: appBar,
       drawer: Container(
           width: MediaQuery.of(context).size.width * 0.9, child: _drawer()),
       body: Center(child: _buildList()),

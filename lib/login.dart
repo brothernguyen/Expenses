@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import './mainScreen.dart';
 //import 'package:flutter_complete_guide/transaction.dart';
 //import 'package:intl/intl.dart';
@@ -31,7 +32,8 @@ class LoginForm extends StatelessWidget {
 
   _launchForgotPinURLBrowser() async {
     const url = 'https://www.vidlet.com/';
-    if (await canLaunch(url)) {
+    if (await canLaunchUrlString(url)) {
+      // ignore: deprecated_member_use
       await launch(url);
     } else {
       throw 'Could not launch $url';
@@ -108,6 +110,7 @@ class LoginForm extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        toolbarHeight: 100,
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,

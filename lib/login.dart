@@ -1,8 +1,8 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import './mainScreen.dart';
-//import 'package:flutter_complete_guide/transaction.dart';
-//import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 //import './transaction.dart';
@@ -139,31 +139,59 @@ class LoginForm extends StatelessWidget {
                           controller: pinController,
                         ),
                         const SizedBox(height: 30),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            textStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            primary: Colors.deepOrange,
-                          ),
-                          onPressed: () {
-                            handleInput(context);
-                          },
-                          child: const Text('LOG IN'),
-                        ),
-                        const SizedBox(height: 5),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            textStyle: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            primary: Color(0xFF660033),
-                          ),
-                          onPressed: () {},
-                          child: const Text('JOIN OURS EXPERTS'),
-                        ),
+                        Platform.isIOS
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                    CupertinoButton(
+                                      onPressed: () {},
+                                      child: const Text(
+                                        'LOG IN',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      color: Colors.deepOrange,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    CupertinoButton(
+                                      onPressed: () {},
+                                      child: const Text(
+                                        'JOIN OURS EXPERTS',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      color: Color(0xFF660033),
+                                    )
+                                  ])
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        primary: Colors.deepOrange,
+                                      ),
+                                      onPressed: () {
+                                        handleInput(context);
+                                      },
+                                      child: const Text('LOG IN'),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        textStyle: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        primary: Color(0xFF660033),
+                                      ),
+                                      onPressed: () {},
+                                      child: const Text('JOIN OURS EXPERTS'),
+                                    )
+                                  ]),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[

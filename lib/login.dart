@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 import './mainScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
 
   _launchForgotPinURLBrowser() async {
     const url = 'https://www.vidlet.com/';
-    if (await canLaunchUrlString(url)) {
+    if (await canLaunch(url)) {
       // ignore: deprecated_member_use
       await launch(url);
     } else {
@@ -144,7 +144,9 @@ class LoginForm extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                     CupertinoButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        handleInput(context);
+                                      },
                                       child: const Text(
                                         'LOG IN',
                                         style: TextStyle(

@@ -4,13 +4,26 @@ import 'package:flutter/cupertino.dart';
 //import './login.dart';
 import './videoQuestion.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   MainScreen({Key key}) : super(key: key);
 
+  Future<void> fetchScripts() async {
+    final url = Uri.parse(
+        'https://flutter-prototype-dcaf5-default-rtdb.firebaseio.com/scripts.json');
+    try {
+      final response = await http.get(url);
+      print(json.decode(response.body));
+    } catch (error) {
+      throw (error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    fetchScripts();
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text('Data Question'),

@@ -7,15 +7,48 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 // ignore: must_be_immutable
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
+
+  @override
+  MainScreenState createState() {
+    return MainScreenState();
+  }
+}
+
+class MainScreenState extends State<MainScreen> {
+  List<Object> items = [];
+
+  @override
+  void initState() {
+    print('initState()');
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(MainScreen oldWidget) {
+    print('didUpdateWidget()');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print('dispose()');
+    super.dispose();
+  }
 
   Future<void> fetchScripts() async {
     final url = Uri.parse(
         'https://flutter-prototype-dcaf5-default-rtdb.firebaseio.com/scripts.json');
     try {
       final response = await http.get(url);
-      print(json.decode(response.body));
+      if (items.length == 0) {
+        setState(() {
+          items = json.decode(response.body);
+        });
+      }
+
+      //print(json.decode(response.body));
     } catch (error) {
       throw (error);
     }
@@ -116,6 +149,7 @@ class MainScreen extends StatelessWidget {
   }
 
   Widget _buildList() {
+    print(items);
     final videos = VideoQuestion().videoQuestions;
     return ListView.builder(
         itemCount: videos.length,

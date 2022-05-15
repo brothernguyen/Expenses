@@ -3,9 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './mainScreen.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-//import './transaction.dart';
 
 class Login extends StatelessWidget {
   @override

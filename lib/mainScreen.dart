@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_complete_guide/script.dart';
 //import './login.dart';
-import './videoQuestion.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -17,11 +17,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
-  List<Object> items = [];
+  List<Script> items = [];
 
   @override
   void initState() {
-    print('initState()');
     super.initState();
   }
 
@@ -37,18 +36,23 @@ class MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
-  Future<void> fetchScripts() async {
+  void fetchScripts() async {
     final url = Uri.parse(
         'https://flutter-prototype-dcaf5-default-rtdb.firebaseio.com/scripts.json');
     try {
       final response = await http.get(url);
-      if (items.length == 0) {
-        setState(() {
-          items = json.decode(response.body);
-        });
+      List<Script> itemsFromJson = [];
+
+      for (final item in jsonDecode(response.body)) {
+        itemsFromJson.add(Script.fromJson(item));
       }
 
-      //print(json.decode(response.body));
+      if (items.length == 0) {
+        setState(() {
+          items = itemsFromJson;
+        });
+      }
+      print(items[0].title);
     } catch (error) {
       throw (error);
     }
@@ -149,14 +153,12 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Widget _buildList() {
-    print(items);
-    final videos = VideoQuestion().videoQuestions;
     return ListView.builder(
-        itemCount: videos.length,
+        itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: [
-              _tile(videos[index].title, videos[index].subTitle),
+              _tile(items[index].title, items[index].subTitle),
               const Divider(
                 height: 20,
                 thickness: 1,

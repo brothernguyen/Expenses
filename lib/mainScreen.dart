@@ -18,10 +18,12 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   List<Script> items = [];
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
+    fetchScripts();
   }
 
   @override
@@ -37,6 +39,9 @@ class MainScreenState extends State<MainScreen> {
   }
 
   void fetchScripts() async {
+    setState(() {
+      isLoading = true;
+    });
     final url = Uri.parse(
         'https://flutter-prototype-dcaf5-default-rtdb.firebaseio.com/scripts.json');
     try {
@@ -46,13 +51,10 @@ class MainScreenState extends State<MainScreen> {
       for (final item in jsonDecode(response.body)) {
         itemsFromJson.add(Script.fromJson(item));
       }
-
-      if (items.length == 0) {
-        setState(() {
-          items = itemsFromJson;
-        });
-      }
-      print(items[0].title);
+      setState(() {
+        items = itemsFromJson;
+        isLoading = false;
+      });
     } catch (error) {
       throw (error);
     }
@@ -60,7 +62,6 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    fetchScripts();
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text('Data Question'),
@@ -153,22 +154,28 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Widget _buildList() {
-    return ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Column(
-            children: [
-              _tile(items[index].title, items[index].subTitle),
-              const Divider(
-                height: 20,
-                thickness: 1,
-                indent: 20,
-                endIndent: 20,
-                color: Colors.blue,
-              ),
-            ],
-          );
-        });
+    return isLoading
+        ? CupertinoActivityIndicator(
+            animating: isLoading,
+            radius: 14.0,
+            color: Colors.blueAccent,
+          )
+        : ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: [
+                  _tile(items[index].title, items[index].subTitle),
+                  const Divider(
+                    height: 20,
+                    thickness: 1,
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.blue,
+                  ),
+                ],
+              );
+            });
   }
 
   ListTile _tile(String title, String subtitle) {

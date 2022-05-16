@@ -170,13 +170,13 @@ class MainScreenState extends State<MainScreen> {
                     onTap: () => {onCardTapped(context, items[index])},
                     child: _card(index),
                   ),
-                  const Divider(
-                    height: 20,
-                    thickness: 1,
-                    indent: 20,
-                    endIndent: 20,
-                    color: Colors.blue,
-                  ),
+                  // const Divider(
+                  //   height: 20,
+                  //   thickness: 1,
+                  //   indent: 20,
+                  //   endIndent: 20,
+                  //   color: Colors.blue,
+                  // ),
                 ],
               );
             });
@@ -190,7 +190,7 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Card _card(int index) {
-    var imgUrl = "https://picsum.photos/200/300?random=${index.toString()}";
+    var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
     return Card(
       shape: RoundedRectangleBorder(
@@ -202,7 +202,7 @@ class MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.all(0),
         child: Container(
           width: double.infinity,
-          height: 200,
+          height: 120,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               image: DecorationImage(

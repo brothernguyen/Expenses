@@ -158,14 +158,15 @@ class MainScreenState extends State<MainScreen> {
         ? CupertinoActivityIndicator(
             animating: isLoading,
             radius: 14.0,
-            color: Colors.blueAccent,
+            color: Color.fromARGB(255, 79, 81, 84),
           )
         : ListView.builder(
             itemCount: items.length,
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [
-                  _tile(items[index].title, items[index].subTitle),
+                  // _tile(items[index].title, items[index].subTitle),
+                  _card(index),
                   const Divider(
                     height: 20,
                     thickness: 1,
@@ -178,15 +179,38 @@ class MainScreenState extends State<MainScreen> {
             });
   }
 
-  ListTile _tile(String title, String subtitle) {
-    return ListTile(
-      title: Text(title,
-          style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-              color: Colors.black87)),
-      subtitle: Text(subtitle),
-      trailing: Icon(Icons.arrow_forward),
-    );
+  Card _card(int index) {
+    var imgUrl = "https://picsum.photos/200/300?random=${index.toString()}";
+    return Card(
+        elevation: 6,
+        margin: const EdgeInsets.all(12),
+        child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Container(
+                width: double.infinity,
+                height: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(imgUrl), fit: BoxFit.cover)),
+                child: Container(
+                    alignment: Alignment.bottomRight,
+                    padding: const EdgeInsets.all(12),
+                    child: Text(items[index].title,
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70))))));
   }
+
+  // ListTile _tile(String title, String subtitle) {
+  //   return ListTile(
+  //     title: Text(title,
+  //         style: const TextStyle(
+  //             fontWeight: FontWeight.w500,
+  //             fontSize: 20,
+  //             color: Colors.black87)),
+  //     subtitle: Text(subtitle),
+  //     trailing: Icon(Icons.arrow_forward),
+  //   );
+  // }
 }

@@ -5,8 +5,7 @@ import 'package:flutter_complete_guide/script.dart';
 //import './login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:intl/intl.dart';
+import './cardDetail.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
@@ -66,7 +65,7 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Data Question'),
+            middle: Text('Scripts'),
             automaticallyImplyLeading: false,
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
@@ -184,7 +183,10 @@ class MainScreenState extends State<MainScreen> {
   }
 
   onCardTapped(context, Script item) {
-    print(item.title);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CardDetail()),
+    );
   }
 
   Card _card(int index) {

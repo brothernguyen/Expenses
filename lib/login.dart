@@ -167,6 +167,7 @@ class LoginForm extends StatelessWidget {
                                 children: [
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
+                                        elevation: 20,
                                         textStyle: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
@@ -181,6 +182,7 @@ class LoginForm extends StatelessWidget {
                                     const SizedBox(height: 5),
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
+                                        elevation: 20,
                                         textStyle: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,

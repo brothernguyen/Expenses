@@ -98,7 +98,7 @@ class MainScreenState extends State<MainScreen> {
       appBar: appBar,
       drawer: Container(
           width: MediaQuery.of(context).size.width * 0.9, child: _drawer()),
-      body: Center(child: _buildList()),
+      body: Center(child: _buildList(context)),
       bottomNavigationBar: _bottomBar(),
     );
   }
@@ -155,7 +155,7 @@ class MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _buildList() {
+  Widget _buildList(context) {
     return isLoading
         ? CupertinoActivityIndicator(
             animating: isLoading,
@@ -167,7 +167,10 @@ class MainScreenState extends State<MainScreen> {
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [
-                  _card(index),
+                  GestureDetector(
+                    onTap: () => {onCardTapped(context, items[index])},
+                    child: _card(index),
+                  ),
                   const Divider(
                     height: 20,
                     thickness: 1,
@@ -180,13 +183,18 @@ class MainScreenState extends State<MainScreen> {
             });
   }
 
+  onCardTapped(context, Script item) {
+    print(item.title);
+  }
+
   Card _card(int index) {
     var imgUrl = "https://picsum.photos/200/300?random=${index.toString()}";
+    double elevation = Platform.isAndroid ? 16 : 0;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
-      elevation: 6,
+      elevation: elevation,
       margin: const EdgeInsets.all(8),
       child: Padding(
         padding: const EdgeInsets.all(0),

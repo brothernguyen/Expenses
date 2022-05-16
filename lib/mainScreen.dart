@@ -6,6 +6,8 @@ import 'package:flutter_complete_guide/script.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 // ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -165,7 +167,6 @@ class MainScreenState extends State<MainScreen> {
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [
-                  // _tile(items[index].title, items[index].subTitle),
                   _card(index),
                   const Divider(
                     height: 20,
@@ -182,24 +183,48 @@ class MainScreenState extends State<MainScreen> {
   Card _card(int index) {
     var imgUrl = "https://picsum.photos/200/300?random=${index.toString()}";
     return Card(
-        elevation: 6,
-        margin: const EdgeInsets.all(12),
-        child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Container(
-                width: double.infinity,
-                height: 200,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(imgUrl), fit: BoxFit.cover)),
-                child: Container(
-                    alignment: Alignment.bottomRight,
-                    padding: const EdgeInsets.all(12),
-                    child: Text(items[index].title,
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white70))))));
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      elevation: 6,
+      margin: const EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.all(0),
+        child: Container(
+          width: double.infinity,
+          height: 200,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              image: DecorationImage(
+                  image: NetworkImage(imgUrl), fit: BoxFit.cover)),
+          child: Container(
+            alignment: Alignment.bottomRight,
+            padding: const EdgeInsets.all(12),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    items[index].title,
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    "${items[index].first_name} ${items[index].last_name}",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ]),
+          ),
+        ),
+      ),
+    );
   }
 
   // ListTile _tile(String title, String subtitle) {

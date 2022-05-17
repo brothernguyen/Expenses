@@ -78,7 +78,13 @@ class MainScreenState extends State<MainScreen> {
       appBar: appBar,
       drawer: Container(
           width: MediaQuery.of(context).size.width * 0.9, child: _drawer()),
-      body: Center(child: _buildList(context)),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await Future.delayed(Duration(seconds: 2));
+          fetchScripts();
+        },
+        child: Center(child: _buildList(context)),
+      ),
       bottomNavigationBar: _bottomBar(),
     );
   }

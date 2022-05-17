@@ -63,35 +63,16 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final PreferredSizeWidget appBar = Platform.isIOS
-        ? CupertinoNavigationBar(
-            middle: Text('Scripts'),
-            automaticallyImplyLeading: false,
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                GestureDetector(
-                  child: Icon(
-                    CupertinoIcons.power,
-                    color: Colors.grey,
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-              mainAxisAlignment: MainAxisAlignment.end,
-            ),
-          )
-        : AppBar(title: const Text('Data Question'), actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.power_settings_new),
-              tooltip: 'Log out',
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ]);
+    final PreferredSizeWidget appBar =
+        AppBar(title: const Text('Data Question'), actions: <Widget>[
+      IconButton(
+        icon: const Icon(Icons.power_settings_new),
+        tooltip: 'Log out',
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ]);
 
     return Scaffold(
       appBar: appBar,

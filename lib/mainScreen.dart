@@ -43,19 +43,23 @@ class MainScreenState extends State<MainScreen> {
     setState(() {
       isLoading = true;
     });
+
+    List<Script> itemsFromJson = [];
     final url = Uri.parse(
         'https://flutter-prototype-dcaf5-default-rtdb.firebaseio.com/scripts.json');
     try {
-      final response = await http.get(url);
-      List<Script> itemsFromJson = [];
-
-      for (final item in jsonDecode(response.body)) {
-        itemsFromJson.add(Script.fromJson(item));
-      }
-      setState(() {
-        items = itemsFromJson;
-        isLoading = false;
-      });
+      await http
+          .get(url)
+          .then((response) => {
+                for (final item in jsonDecode(response.body))
+                  {itemsFromJson.add(Script.fromJson(item))}
+              })
+          .then((_) => {
+                setState(() {
+                  items = itemsFromJson;
+                  isLoading = false;
+                })
+              });
     } catch (error) {
       throw (error);
     }

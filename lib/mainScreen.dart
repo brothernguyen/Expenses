@@ -39,7 +39,7 @@ class MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
-  void fetchScripts() async {
+  Future<void> fetchScripts() async {
     setState(() {
       isLoading = true;
     });
@@ -61,7 +61,19 @@ class MainScreenState extends State<MainScreen> {
                 })
               });
     } catch (error) {
-      throw (error);
+      return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+                title: Text(
+                  "An error occurred",
+                ),
+                content: Text(error.toString()),
+                actions: <Widget>[
+                  TextButton(
+                      onPressed: () => {Navigator.of(ctx).pop()},
+                      child: Text('Okey'))
+                ],
+              ));
     }
   }
 
@@ -195,9 +207,10 @@ class MainScreenState extends State<MainScreen> {
           width: double.infinity,
           height: 120,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              image: DecorationImage(
-                  image: NetworkImage(imgUrl), fit: BoxFit.cover)),
+            borderRadius: BorderRadius.circular(15.0),
+            image:
+                DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.cover),
+          ),
           child: Container(
             alignment: Alignment.bottomRight,
             padding: const EdgeInsets.all(12),

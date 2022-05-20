@@ -173,13 +173,6 @@ class MainScreenState extends State<MainScreen> {
                     onTap: () => {onCardTapped(context, items[index])},
                     child: _card(index),
                   ),
-                  // const Divider(
-                  //   height: 20,
-                  //   thickness: 1,
-                  //   indent: 20,
-                  //   endIndent: 20,
-                  //   color: Colors.blue,
-                  // ),
                 ],
               );
             });
@@ -193,6 +186,7 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Card _card(int index) {
+    print(items[index].img);
     var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
     return Card(
@@ -208,8 +202,8 @@ class MainScreenState extends State<MainScreen> {
           height: 120,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
-            image:
-                DecorationImage(image: NetworkImage(imgUrl), fit: BoxFit.cover),
+            image: DecorationImage(
+                image: NetworkImage(items[index].img), fit: BoxFit.cover),
           ),
           child: Container(
             alignment: Alignment.bottomRight,
@@ -240,16 +234,4 @@ class MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
-  // ListTile _tile(String title, String subtitle) {
-  //   return ListTile(
-  //     title: Text(title,
-  //         style: const TextStyle(
-  //             fontWeight: FontWeight.w500,
-  //             fontSize: 20,
-  //             color: Colors.black87)),
-  //     subtitle: Text(subtitle),
-  //     trailing: Icon(Icons.arrow_forward),
-  //   );
-  // }
 }

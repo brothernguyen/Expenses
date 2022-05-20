@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,12 +16,30 @@ class Login extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatelessWidget {
-  final emailController = TextEditingController();
-  final pinController = TextEditingController();
+class LoginForm extends StatefulWidget {
   LoginForm({Key key}) : super(key: key);
 
-  void handleInput(context) {
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final emailController = TextEditingController();
+
+  final pinController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    pinController.dispose();
+    super.dispose();
+  }
+
+  Future handleInput(context) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: pinController.text.trim());
+
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MainScreen()),

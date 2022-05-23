@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_complete_guide/script.dart';
@@ -77,6 +78,11 @@ class MainScreenState extends State<MainScreen> {
     }
   }
 
+  Future<void> _signOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final PreferredSizeWidget appBar =
@@ -85,7 +91,7 @@ class MainScreenState extends State<MainScreen> {
         icon: const Icon(Icons.power_settings_new),
         tooltip: 'Log out',
         onPressed: () {
-          Navigator.pop(context);
+          _signOut(context);
         },
       ),
     ]);

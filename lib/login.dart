@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './mainScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -25,7 +26,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final emailController = TextEditingController();
-
   final pinController = TextEditingController();
 
   @override

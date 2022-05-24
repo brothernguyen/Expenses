@@ -185,16 +185,19 @@ class MainScreenState extends State<MainScreen> {
   }
 
   onCardTapped(context, Script item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CardDetail()),
-    );
+    if (!item.isPublished) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CardDetail()),
+      );
+    }
   }
 
   Card _card(int index) {
     print(items[index].img);
-    var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
+    //var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
+    String isPublished = items[index].isPublished ? 'Published' : 'UnPublished';
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
@@ -214,26 +217,43 @@ class MainScreenState extends State<MainScreen> {
           child: Container(
             alignment: Alignment.bottomRight,
             padding: const EdgeInsets.all(12),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    items[index].title,
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        isPublished,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "${items[index].first_name} ${items[index].last_name}",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white70,
-                    ),
-                  ),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          items[index].title,
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        Text(
+                          "${items[index].first_name} ${items[index].last_name}",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ]),
                 ]),
           ),
         ),

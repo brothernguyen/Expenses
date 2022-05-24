@@ -21,6 +21,7 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   List<Script> items = [];
   bool isLoading = false;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -85,6 +86,7 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(_selectedIndex);
     final PreferredSizeWidget appBar =
         AppBar(title: const Text('Data Question'), actions: <Widget>[
       IconButton(
@@ -106,10 +108,16 @@ class MainScreenState extends State<MainScreen> {
           fetchScripts();
         },
         child: Center(child: _buildList(context)),
+        //child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: _bottomBar(),
     );
   }
+
+  List<Widget> _widgetOptions = <Widget>[
+    MainScreen(),
+    CardDetail(),
+  ];
 
   Widget _bottomBar() {
     return BottomNavigationBar(
@@ -124,7 +132,16 @@ class MainScreenState extends State<MainScreen> {
         ),
       ],
       selectedItemColor: Colors.amber[800],
+      currentIndex: _selectedIndex,
+      onTap: onBottomBarTapped,
     );
+  }
+
+  void onBottomBarTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    print(index);
   }
 
   Widget _drawer() {
@@ -194,7 +211,6 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Card _card(int index) {
-    print(items[index].img);
     //var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
     String isPublished = items[index].isPublished ? 'Published' : 'UnPublished';

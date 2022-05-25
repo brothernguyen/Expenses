@@ -107,17 +107,22 @@ class MainScreenState extends State<MainScreen> {
           await Future.delayed(Duration(seconds: 2));
           fetchScripts();
         },
-        child: Center(child: _buildList(context)),
-        //child: _widgetOptions.elementAt(_selectedIndex),
+        //child: Center(child: _buildList(context)),
+        child: _tabBarItems(context, _selectedIndex),
       ),
       bottomNavigationBar: _bottomBar(),
     );
   }
 
-  List<Widget> _widgetOptions = <Widget>[
-    MainScreen(),
-    CardDetail(),
-  ];
+  Widget _tabBarItems(BuildContext context, int _selectedIndex) {
+    List<Widget> widgetOptions = <Widget>[
+      Center(child: _buildList(context)),
+      Text(
+        'Index 1: Business',
+      ),
+    ];
+    return widgetOptions.elementAt(_selectedIndex);
+  }
 
   Widget _bottomBar() {
     return BottomNavigationBar(
@@ -213,7 +218,7 @@ class MainScreenState extends State<MainScreen> {
   Card _card(int index) {
     //var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
-    String isPublished = items[index].isPublished ? 'Published' : 'UnPublished';
+    String isPublished = items[index].isPublished ? 'Published' : 'Unpublished';
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
@@ -243,7 +248,7 @@ class MainScreenState extends State<MainScreen> {
                         isPublished,
                         style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w500,
                           color: Colors.white70,
                         ),
                       ),

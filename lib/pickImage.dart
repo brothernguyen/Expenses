@@ -15,6 +15,7 @@ class _PickImageState extends State<PickImage> {
   Future<void> takePicture() async {
     final imageFile = await ImagePicker()
         .pickImage(source: ImageSource.gallery, maxWidth: 600);
+    print(imageFile);
   }
 
   @override

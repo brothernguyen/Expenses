@@ -13,7 +13,11 @@ class Login extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter App',
-      home: LoginForm(),
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(builder: (context) {
+          return LoginForm();
+        });
+      },
     );
   }
 }
@@ -39,8 +43,10 @@ class _LoginFormState extends State<LoginForm> {
   Future handleInput(context) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: pinController.text.trim());
+          // email: emailController.text.trim(),
+          // password: pinController.text.trim());
+          email: 'a@a.com',
+          password: '111111');
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),

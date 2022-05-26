@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_complete_guide/script.dart';
-//import './login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import './cardDetail.dart';
+import './pickImage.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
@@ -86,9 +86,10 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_selectedIndex);
+    String appBarTitle =
+        _selectedIndex == 0 ? 'Data Question' : 'Choose an image';
     final PreferredSizeWidget appBar =
-        AppBar(title: const Text('Data Question'), actions: <Widget>[
+        AppBar(title: Text(appBarTitle), actions: <Widget>[
       IconButton(
         icon: const Icon(Icons.power_settings_new),
         tooltip: 'Log out',
@@ -117,9 +118,7 @@ class MainScreenState extends State<MainScreen> {
   Widget _tabBarItems(BuildContext context, int _selectedIndex) {
     List<Widget> widgetOptions = <Widget>[
       Center(child: _buildList(context)),
-      Text(
-        'Index 1: Business',
-      ),
+      PickImage(),
     ];
     return widgetOptions.elementAt(_selectedIndex);
   }
@@ -146,7 +145,6 @@ class MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedIndex = index;
     });
-    print(index);
   }
 
   Widget _drawer() {

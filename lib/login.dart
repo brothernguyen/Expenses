@@ -185,6 +185,9 @@ class _LoginFormState extends State<LoginForm> {
                           controller: emailController,
                         ),
                         TextField(
+                          obscureText: true,
+                          enableSuggestions: false,
+                          autocorrect: false,
                           decoration: InputDecoration(labelText: 'PIN'),
                           keyboardType: TextInputType.number,
                           controller: pinController,

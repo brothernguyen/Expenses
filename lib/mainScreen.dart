@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_complete_guide/login.dart';
 import 'package:flutter_complete_guide/script.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -82,6 +83,7 @@ class MainScreenState extends State<MainScreen> {
   Future<void> _signOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.pop(context);
+    Navigator.pushNamed(context, '/');
   }
 
   @override
@@ -177,6 +179,12 @@ class MainScreenState extends State<MainScreen> {
           ),
           ListTile(
             title: Text('Logout'),
+            onTap: () async {
+              await Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            },
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/cardDetail.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './mainScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,10 +14,11 @@ class Login extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter App',
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(builder: (context) {
-          return LoginForm();
-        });
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginForm(),
+        '/main_screen': (context) => MainScreen(),
+        '/detail_screen': (context) => CardDetail(),
       },
     );
   }
@@ -47,10 +49,9 @@ class _LoginFormState extends State<LoginForm> {
           // password: pinController.text.trim());
           email: 'a@a.com',
           password: '111111');
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
-      );
+
+      Navigator.pop(context);
+      Navigator.pushNamed(context, '/main_screen');
     } on FirebaseAuthException catch (e) {
       print(e.message);
       return showDialog<void>(

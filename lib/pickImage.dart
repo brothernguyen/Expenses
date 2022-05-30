@@ -23,24 +23,24 @@ class _PickImageState extends State<PickImage> {
     return Scaffold(
         body: Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MaterialButton(
-            color: Colors.blue,
-            child: Text(
-              "Pick Image from Gallery",
-              style:
-                  TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
-            ),
+          // MaterialButton(
+          //   color: Colors.blue,
+          //   child: Text(
+          //     "Pick Image from Gallery",
+          //     style:
+          //         TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
+          //   ),
+          //   onPressed: takePicture,
+          // ),
+          CupertinoButton(
             onPressed: takePicture,
-          ),
-          MaterialButton(
-            color: Colors.blue,
-            child: Text(
-              "Pick Image from Camera",
-              style:
-                  TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
+            child: const Text(
+              "Pick Image from Gallery",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            onPressed: () {},
+            color: Colors.blueAccent,
           ),
         ],
       ),

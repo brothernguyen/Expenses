@@ -133,8 +133,8 @@ class MainScreenState extends State<MainScreen> {
           label: 'Scripts',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.checklist_outlined),
-          label: 'Completed',
+          icon: Icon(Icons.photo_camera),
+          label: 'Camera',
         ),
       ],
       selectedItemColor: Colors.amber[800],

@@ -22,6 +22,8 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   List<Script> items = [];
   bool isLoading = false;
+  bool isWifiOnly = false;
+  bool isHD = false;
   int _selectedIndex = 0;
 
   @override
@@ -164,11 +166,23 @@ class MainScreenState extends State<MainScreen> {
             ),
           ),
           ListTile(
-            trailing: Switch.adaptive(value: true, onChanged: (value) {}),
+            trailing: Switch.adaptive(
+                value: isWifiOnly,
+                onChanged: (value) {
+                  setState(() {
+                    isWifiOnly = !isWifiOnly;
+                  });
+                }),
             title: Text('WiFi only'),
           ),
           ListTile(
-            trailing: Switch.adaptive(value: true, onChanged: (value) {}),
+            trailing: Switch.adaptive(
+                value: isHD,
+                onChanged: (value) {
+                  setState(() {
+                    isHD = !isHD;
+                  });
+                }),
             title: Text('HD Video'),
           ),
           ListTile(

@@ -8,30 +8,12 @@ import 'package:url_launcher/url_launcher.dart';
 import './mainScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => LoginForm(),
-        '/main_screen': (context) => MainScreen(),
-        '/detail_screen': (context) => CardDetail(),
-      },
-    );
-  }
+  State<Login> createState() => _LoginState();
 }
 
-class LoginForm extends StatefulWidget {
-  LoginForm({Key key}) : super(key: key);
-
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
+class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final pinController = TextEditingController();
 

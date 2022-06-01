@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './login.dart';
 import './mainScreen.dart';
 import './cardDetail.dart';
+import './auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 //import 'package:intl/intl.dart';
@@ -25,7 +26,7 @@ class NavRoot extends StatelessWidget {
       title: 'Flutter App',
       initialRoute: '/',
       routes: {
-        '/': (context) => Login(),
+        '/': (context) => Auth(),
         '/main_screen': (context) => MainScreen(),
         '/detail_screen': (context) => CardDetail(),
       },

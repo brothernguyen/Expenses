@@ -9,6 +9,9 @@ import './mainScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class Login extends StatefulWidget {
+  final VoidCallback showRegisterPage;
+
+  const Login({Key key, this.showRegisterPage}) : super(key: key);
   @override
   State<Login> createState() => _LoginState();
 }
@@ -197,16 +200,27 @@ class _LoginState extends State<Login> {
                                       ),
                                       color: Colors.deepOrange,
                                     ),
-                                    const SizedBox(height: 10),
-                                    CupertinoButton(
-                                      onPressed: () {},
-                                      child: const Text(
-                                        'JOIN OURS EXPERTS',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      color: Color(0xFF660033),
-                                    )
+                                    const SizedBox(height: 20),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Not a member? ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        GestureDetector(
+                                          onTap: widget.showRegisterPage,
+                                          child: Text(
+                                            'Register now',
+                                            style: TextStyle(
+                                                color: Colors.blue,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ])
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -225,19 +239,27 @@ class _LoginState extends State<Login> {
                                       },
                                       child: const Text('LOG IN'),
                                     ),
-                                    const SizedBox(height: 5),
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        elevation: 20,
-                                        textStyle: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
+                                    const SizedBox(height: 20),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Not a member? ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        primary: Color(0xFF660033),
-                                      ),
-                                      onPressed: () {},
-                                      child: const Text('JOIN OURS EXPERTS'),
-                                    )
+                                        GestureDetector(
+                                          onTap: widget.showRegisterPage,
+                                          child: Text(
+                                            'Register now',
+                                            style: TextStyle(
+                                                color: Colors.blue,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ]),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

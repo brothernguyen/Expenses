@@ -18,12 +18,12 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final emailController = TextEditingController();
-  final pinController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
-    pinController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           // email: emailController.text.trim(),
-          // password: pinController.text.trim());
+          // password: passwordController.text.trim());
           email: 'a@a.com',
           password: '111111');
 
@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
     }
   }
 
-  _launchForgotPinURLBrowser() async {
+  _launchForgotPasswordURLBrowser() async {
     const url = 'https://www.vidlet.com/';
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use
@@ -180,9 +180,9 @@ class _LoginState extends State<Login> {
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          decoration: InputDecoration(labelText: 'PIN'),
+                          decoration: InputDecoration(labelText: 'Password'),
                           keyboardType: TextInputType.number,
-                          controller: pinController,
+                          controller: passwordController,
                         ),
                         const SizedBox(height: 30),
                         Platform.isIOS
@@ -291,9 +291,9 @@ class _LoginState extends State<Login> {
                                   textStyle: const TextStyle(fontSize: 14),
                                 ),
                                 onPressed: () {
-                                  _launchForgotPinURLBrowser();
+                                  _launchForgotPasswordURLBrowser();
                                 },
-                                child: const Text('Forgot PIN'),
+                                child: const Text('Forgot Password'),
                               ),
                             ),
                           ],

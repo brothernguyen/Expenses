@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +16,28 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
-  final pinController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
-    pinController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  Future signUp() async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    final confirmPassword = confirmPasswordController.text.trim();
+
+    if (password == confirmPassword) {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+    } else {
+      print('wrong confirm password!!!');
+    }
   }
 
   @override
@@ -55,9 +72,18 @@ class _SignUpState extends State<SignUp> {
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          decoration: InputDecoration(labelText: 'PIN'),
+                          decoration: InputDecoration(labelText: 'Password'),
                           keyboardType: TextInputType.number,
-                          controller: pinController,
+                          controller: passwordController,
+                        ),
+                        TextField(
+                          obscureText: true,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          decoration:
+                              InputDecoration(labelText: 'Confirm Password'),
+                          keyboardType: TextInputType.number,
+                          controller: confirmPasswordController,
                         ),
                         const SizedBox(height: 30),
                         Platform.isIOS
@@ -65,7 +91,9 @@ class _SignUpState extends State<SignUp> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                     CupertinoButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        signUp();
+                                      },
                                       child: const Text(
                                         'SIGN UP',
                                         style: TextStyle(
@@ -94,36 +122,6 @@ class _SignUpState extends State<SignUp> {
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                            vertical: 10,
-                                            horizontal: 15,
-                                          ),
-                                          padding: EdgeInsets.all(2),
-                                          child: TextButton(
-                                            style: TextButton.styleFrom(
-                                              textStyle:
-                                                  const TextStyle(fontSize: 14),
-                                            ),
-                                            onPressed: () {
-                                              showHelpDialog(context);
-                                            },
-                                            child: const Text('Help'),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                            vertical: 10,
-                                            horizontal: 15,
-                                          ),
-                                          padding: EdgeInsets.all(2),
-                                        ),
-                                      ],
-                                    ),
                                   ])
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -137,7 +135,9 @@ class _SignUpState extends State<SignUp> {
                                         ),
                                         primary: Colors.deepOrange,
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        signUp();
+                                      },
                                       child: const Text('SIGN UP'),
                                     ),
                                     const SizedBox(height: 20),
@@ -158,36 +158,6 @@ class _SignUpState extends State<SignUp> {
                                                 color: Colors.blue,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                            vertical: 10,
-                                            horizontal: 15,
-                                          ),
-                                          padding: EdgeInsets.all(2),
-                                          child: TextButton(
-                                            style: TextButton.styleFrom(
-                                              textStyle:
-                                                  const TextStyle(fontSize: 14),
-                                            ),
-                                            onPressed: () {
-                                              showHelpDialog(context);
-                                            },
-                                            child: const Text('Help'),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                            vertical: 10,
-                                            horizontal: 15,
-                                          ),
-                                          padding: EdgeInsets.all(2),
                                         ),
                                       ],
                                     ),

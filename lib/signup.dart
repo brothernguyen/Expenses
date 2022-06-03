@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/mainScreen.dart';
 
 class SignUp extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -27,17 +28,66 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
   }
 
-  Future signUp() async {
+  Future signUp(BuildContext context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
     final confirmPassword = confirmPasswordController.text.trim();
 
     if (password == confirmPassword) {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+        showSignupDialog(
+            'Signup success', 'New account created with email: $email', true);
+      } on FirebaseAuthException catch (e) {
+        showSignupDialog('Signup Failed', e.message, false);
+      }
     } else {
-      print('wrong confirm password!!!');
+      print('Wrong password confirmation!');
+      showSignupDialog('Signup Failed', 'Wrong password confirmation!', false);
     }
+  }
+
+  showSignupDialog(String title, String content, bool isSuccess) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(title),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(content),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    if (isSuccess) {
+                      Navigator.of(context).pop();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainScreen()),
+                      );
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -92,7 +142,7 @@ class _SignUpState extends State<SignUp> {
                                 children: [
                                     CupertinoButton(
                                       onPressed: () {
-                                        signUp();
+                                        signUp(context);
                                       },
                                       child: const Text(
                                         'SIGN UP',
@@ -136,7 +186,7 @@ class _SignUpState extends State<SignUp> {
                                         primary: Colors.deepOrange,
                                       ),
                                       onPressed: () {
-                                        signUp();
+                                        signUp(context);
                                       },
                                       child: const Text('SIGN UP'),
                                     ),
@@ -170,70 +220,5 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
-  }
-
-  showHelpDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Need help?'),
-            actions: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.bug_report_rounded,
-                              size: 20, color: Colors.blue),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                              textStyle: TextStyle(fontSize: 14),
-                            ),
-                            onPressed: () {},
-                            child: Text(
-                              'Report a bug',
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.lightbulb_outline,
-                              size: 20, color: Colors.blue),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                              textStyle: TextStyle(fontSize: 14),
-                            ),
-                            onPressed: () {},
-                            child: Text('Suggest an improvement'),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.question_mark_rounded,
-                              size: 20, color: Colors.blue),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                              textStyle: TextStyle(fontSize: 14),
-                            ),
-                            onPressed: () {},
-                            child: Text('Ask a question'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          );
-        });
   }
 }

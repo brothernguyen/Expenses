@@ -3,14 +3,14 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 class Script {
-  final int id;
-  final String title;
-  final String subTitle;
-  final String first_name;
-  final String last_name;
-  final String email;
-  final String img;
-  final bool isPublished;
+  int id;
+  String title;
+  String subTitle;
+  String first_name;
+  String last_name;
+  String email;
+  String img;
+  bool isPublished;
 
   Script({
     @required this.id,

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_complete_guide/auth.dart';
 import 'package:flutter_complete_guide/login.dart';
 import 'package:flutter_complete_guide/script.dart';
 import 'package:http/http.dart' as http;
@@ -196,7 +197,7 @@ class MainScreenState extends State<MainScreen> {
             onTap: () async {
               await Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => Login()),
+                MaterialPageRoute(builder: (context) => Auth()),
               );
             },
           ),
@@ -230,7 +231,7 @@ class MainScreenState extends State<MainScreen> {
     if (!item.isPublished) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CardDetail()),
+        MaterialPageRoute(builder: (context) => CardDetail(item)),
       );
     }
   }

@@ -5,6 +5,7 @@ import './login.dart';
 import './mainScreen.dart';
 import './cardDetail.dart';
 import './auth.dart';
+import './script.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 //import 'package:intl/intl.dart';
@@ -28,7 +29,7 @@ class NavRoot extends StatelessWidget {
       routes: {
         '/': (context) => Auth(),
         '/main_screen': (context) => MainScreen(),
-        '/detail_screen': (context) => CardDetail(),
+        //'/detail_screen': (context) => CardDetail(),
       },
     );
   }

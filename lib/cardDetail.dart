@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_complete_guide/script.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 //import './login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -21,10 +23,12 @@ class CardDetail extends StatefulWidget {
 }
 
 class CardDetailState extends State<CardDetail> {
+  final DBRef = FirebaseDatabase.instance.ref();
+
   @override
   Widget build(BuildContext context) {
     Script script = widget.item;
-    print(script.first_name);
+    print(DBRef);
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text('Question Detail'),
@@ -38,6 +42,17 @@ class CardDetailState extends State<CardDetail> {
           );
     return Scaffold(
       appBar: appBar,
+      body: ElevatedButton(
+        child: Text('Update'),
+        onPressed: () {
+          updateData(script);
+        },
+      ),
     );
+  }
+
+  void updateData(Script item) {
+    var id = item.id.toString();
+    DBRef.child('scripts/$id').update({'title': 'BBBBB'});
   }
 }

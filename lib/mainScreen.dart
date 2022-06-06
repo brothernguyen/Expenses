@@ -67,6 +67,7 @@ class MainScreenState extends State<MainScreen> {
                 })
               });
     } catch (error) {
+      print(error.toString());
       return showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
@@ -228,7 +229,7 @@ class MainScreenState extends State<MainScreen> {
   }
 
   onCardTapped(context, Script item) {
-    if (!item.isPublished) {
+    if (!item.isCompleted) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => CardDetail(item)),
@@ -239,7 +240,7 @@ class MainScreenState extends State<MainScreen> {
   Card _card(int index) {
     //var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
-    String isPublished = items[index].isPublished ? 'Published' : 'Unpublished';
+    String isPublished = items[index].isCompleted ? 'Completed' : 'Uncompleted';
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
@@ -288,7 +289,7 @@ class MainScreenState extends State<MainScreen> {
                           ),
                         ),
                         Text(
-                          "${items[index].first_name} ${items[index].last_name}",
+                          items[index].description,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.normal,

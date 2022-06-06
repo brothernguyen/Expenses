@@ -12,7 +12,7 @@ enum QuestionType {
   THANKYOU
 }
 
-class Script {
+class Question {
   int id;
   String title;
   String description;
@@ -20,9 +20,9 @@ class Script {
   String endDate;
   String img;
   bool isCompleted;
-  List questions;
+  List<SubQuestion> questions;
 
-  Script({
+  Question({
     @required this.id,
     @required this.title,
     @required this.description,
@@ -33,8 +33,8 @@ class Script {
     @required this.questions,
   });
 
-  factory Script.fromJson(Map<String, dynamic> json) {
-    return Script(
+  factory Question.fromJson(Map<String, dynamic> json) {
+    return Question(
         id: json['id'] as int,
         title: json['title'] as String,
         description: json['description'] as String,
@@ -42,12 +42,12 @@ class Script {
         endDate: json['endDate'] as String,
         img: json['img'] as String,
         isCompleted: json['isCompleted'] as bool,
-        questions: json['questions']);
+        questions: json['questions'] as List<SubQuestion>);
   }
 }
 
 class SubQuestion {
   String title;
   QuestionType type;
-  List<String> options;
+  Array options;
 }

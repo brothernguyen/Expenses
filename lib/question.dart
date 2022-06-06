@@ -20,7 +20,7 @@ class Question {
   String endDate;
   String img;
   bool isCompleted;
-  List<SubQuestion> questions;
+  List questions;
 
   Question({
     @required this.id,
@@ -49,5 +49,5 @@ class Question {
 class SubQuestion {
   String title;
   QuestionType type;
-  Array options;
+  List options;
 }

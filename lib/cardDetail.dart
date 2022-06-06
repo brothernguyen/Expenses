@@ -25,34 +25,44 @@ class CardDetail extends StatefulWidget {
 class CardDetailState extends State<CardDetail> {
   final DBRef = FirebaseDatabase.instance.ref();
 
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Script script = widget.item;
+    Future.delayed(Duration.zero, () => showHelpDialog(context, script));
     print(DBRef);
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Question Detail'),
+            middle: Text(script.title),
             automaticallyImplyLeading: true,
             leading: CupertinoNavigationBarBackButton(
               onPressed: () => Navigator.of(context).pop(),
             ),
           )
         : AppBar(
-            title: const Text('Question Detail'),
+            title: Text(script.title),
           );
-    return Scaffold(
-      appBar: appBar,
-      body: ElevatedButton(
-        child: Text('Update'),
-        onPressed: () {
-          updateData(script);
-        },
-      ),
-    );
+    return Scaffold(appBar: appBar, body: Text('dcdcd'));
   }
 
-  void updateData(Script item) {
-    var id = item.id.toString();
-    DBRef.child('scripts/$id').update({'title': 'BBBBB'});
-  }
+  // void updateData(Script item) {
+  //   var id = item.id.toString();
+  //   DBRef.child('scripts/$id').update({'title': 'BBBBB'});
+  // }
+}
+
+showHelpDialog(BuildContext context, Script script) {
+  final abc = script.questions[4]['options'];
+  print(abc);
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(script.questions[0]['type']),
+          content: Text(script.questions[0]['title']),
+        );
+      });
 }

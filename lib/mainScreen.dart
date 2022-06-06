@@ -264,34 +264,22 @@ class MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        isPublished,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           items[index].title,
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.white70,
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Text(
                           items[index].description,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                             color: Colors.white70,
                           ),

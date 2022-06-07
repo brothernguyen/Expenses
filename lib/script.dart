@@ -33,18 +33,6 @@ class Script {
     @required this.questions,
   });
 
-  // factory Script.fromJson(dynamic json) {
-  //   return Script(
-  //       id: json['id'] as int,
-  //       title: json['title'] as String,
-  //       description: json['description'] as String,
-  //       startDate: json['startDate'] as String,
-  //       endDate: json['endDate'] as String,
-  //       img: json['img'] as String,
-  //       isCompleted: json['isCompleted'] as bool,
-  //       questions: json['questions']);
-  // }
-
   factory Script.fromJson(Map<String, dynamic> json) {
     return Script(
         id: json['id'] as int,

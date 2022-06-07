@@ -27,6 +27,7 @@ class CardDetailState extends State<CardDetail> {
   TextEditingController _controller;
   String selectedChoice = "";
   bool isDisplayDialog = true;
+  bool isChecked = false;
 
   void initState() {
     super.initState();
@@ -54,7 +55,7 @@ class CardDetailState extends State<CardDetail> {
     return Scaffold(
       appBar: appBar,
       body: Center(
-        child: singleChoice(script),
+        child: multiChoice(script),
       ),
     );
   }
@@ -123,6 +124,41 @@ class CardDetailState extends State<CardDetail> {
           Column(
             children: choiceQuestionCard(script),
           ),
+          const SizedBox(width: 8),
+        ],
+      ),
+    );
+  }
+
+  Card multiChoice(Script script) {
+    List options = script.questions[5]['options'];
+    List<Widget> widgets = [];
+    for (var option in options) {
+      widgets.add(
+        Row(
+          children: [
+            Checkbox(
+              value: isChecked,
+              onChanged: (val) {
+                setState(() {
+                  isChecked = val;
+                });
+              },
+            ),
+            Text(option)
+          ],
+        ),
+      );
+    }
+    return Card(
+      color: Colors.amber,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            title: Text(script.questions[1]['title']),
+          ),
+          Column(children: widgets),
           const SizedBox(width: 8),
         ],
       ),

@@ -35,13 +35,11 @@ class CardDetailState extends State<CardDetail> {
     _controller = TextEditingController();
     Script script = widget.item;
     List options = script.questions[5]['options'];
-    print(options.length);
     _selected = List<bool>.generate(options.length, (int index) => false);
   }
 
   @override
   Widget build(BuildContext context) {
-    print('reRender......');
     Script script = widget.item;
     isDisplayDialog
         ? Future.delayed(Duration.zero, () => displayDialog(context, script))
@@ -139,15 +137,6 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  // Widget buildCheckbox(CheckBoxState checkbox) => Checkbox(
-  //     value: checkbox.value,
-  //     onChanged: (val) {
-  //       setState(() {
-  //         checkbox.value = val;
-  // print(checkbox.value);
-  //       });
-  //     });
-
   List<DataColumn> _createColumns() {
     return [
       DataColumn(label: Text('All')),
@@ -160,9 +149,6 @@ class CardDetailState extends State<CardDetail> {
 
   List<DataRow> _createRows(Script script) {
     List options = script.questions[5]['options'];
-    // List<bool> _selected =
-    //     List<bool>.generate(options.length, (int index) => false);
-
     List<DataRow> rows = [];
 
     for (int index = 0; index < options.length; index++) {
@@ -173,11 +159,7 @@ class CardDetailState extends State<CardDetail> {
           selected: _selected[index],
           onSelectChanged: (bool selected) {
             setState(() {
-              print(index);
-              print(selected);
-              print(_selected[index]);
               _selected[index] = selected;
-              print(_selected[index]);
             });
           }));
     }

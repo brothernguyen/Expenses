@@ -28,19 +28,24 @@ class CardDetailState extends State<CardDetail> {
   String selectedChoice = "";
   bool isDisplayDialog = true;
   bool isChecked = false;
+  List<bool> _selected = [];
 
   void initState() {
     super.initState();
     _controller = TextEditingController();
+    Script script = widget.item;
+    List options = script.questions[5]['options'];
+    print(options.length);
+    _selected = List<bool>.generate(options.length, (int index) => false);
   }
 
   @override
   Widget build(BuildContext context) {
+    print('reRender......');
     Script script = widget.item;
     isDisplayDialog
         ? Future.delayed(Duration.zero, () => displayDialog(context, script))
         : "";
-    print(DBRef);
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text(script.title),
@@ -55,20 +60,26 @@ class CardDetailState extends State<CardDetail> {
     return Scaffold(
       appBar: appBar,
       body: Center(
-        child: multiChoice(script),
-      ),
+          // child: multiChoice(script),
+          child: ListView(
+        children: [
+          textQuestionCard(script),
+          singleChoice(script),
+          multiChoice(script),
+        ],
+      )),
     );
   }
 
   // TEXT & NUMERIC TYPE
   Card textQuestionCard(Script script) {
     return Card(
-      color: Colors.amber,
+      color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[1]['title']),
+            title: Text(script.questions[2]['title']),
           ),
           TextFormField(
             decoration: const InputDecoration(
@@ -91,8 +102,6 @@ class CardDetailState extends State<CardDetail> {
   List<Widget> choiceQuestionCard(Script script) {
     //double elevation = Platform.isAndroid ? 16 : 0;
     List options = script.questions[4]['options'];
-    final a = options.map((e) => e);
-    print(a);
     List<Widget> widgets = [];
     for (var option in options) {
       widgets.add(
@@ -114,12 +123,12 @@ class CardDetailState extends State<CardDetail> {
   Card singleChoice(Script script) {
     //double elevation = Platform.isAndroid ? 16 : 0;
     return Card(
-      color: Colors.amber,
+      color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[1]['title']),
+            title: Text(script.questions[4]['title']),
           ),
           Column(
             children: choiceQuestionCard(script),
@@ -130,35 +139,61 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  Card multiChoice(Script script) {
+  // Widget buildCheckbox(CheckBoxState checkbox) => Checkbox(
+  //     value: checkbox.value,
+  //     onChanged: (val) {
+  //       setState(() {
+  //         checkbox.value = val;
+  // print(checkbox.value);
+  //       });
+  //     });
+
+  List<DataColumn> _createColumns() {
+    return [
+      DataColumn(label: Text('All')),
+    ];
+  }
+
+  DataTable _createDataTable(Script script) {
+    return DataTable(columns: _createColumns(), rows: _createRows(script));
+  }
+
+  List<DataRow> _createRows(Script script) {
     List options = script.questions[5]['options'];
-    List<Widget> widgets = [];
-    for (var option in options) {
-      widgets.add(
-        Row(
-          children: [
-            Checkbox(
-              value: isChecked,
-              onChanged: (val) {
-                setState(() {
-                  isChecked = val;
-                });
-              },
-            ),
-            Text(option)
+    // List<bool> _selected =
+    //     List<bool>.generate(options.length, (int index) => false);
+
+    List<DataRow> rows = [];
+
+    for (int index = 0; index < options.length; index++) {
+      rows.add(DataRow(
+          cells: [
+            DataCell(Text('ASD')),
           ],
-        ),
-      );
+          selected: _selected[index],
+          onSelectChanged: (bool selected) {
+            setState(() {
+              print(index);
+              print(selected);
+              print(_selected[index]);
+              _selected[index] = selected;
+              print(_selected[index]);
+            });
+          }));
     }
+    return rows;
+  }
+
+  Card multiChoice(Script script) {
     return Card(
-      color: Colors.amber,
+      color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[1]['title']),
+            title: Text(script.questions[5]['title']),
           ),
-          Column(children: widgets),
+          Column(children: [_createDataTable(script)]),
           const SizedBox(width: 8),
         ],
       ),

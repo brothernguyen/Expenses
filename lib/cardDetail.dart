@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_complete_guide/question.dart';
 import 'package:flutter_complete_guide/script.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -29,11 +30,12 @@ class CardDetailState extends State<CardDetail> {
   bool isDisplayDialog = true;
   bool isChecked = false;
   List<bool> _selected = [];
+  Script script;
 
   void initState() {
     super.initState();
     _controller = TextEditingController();
-    Script script = widget.item;
+    script = widget.item;
     List options = script.questions[5]['options'];
     _selected = List<bool>.generate(options.length, (int index) => false);
   }
@@ -58,28 +60,106 @@ class CardDetailState extends State<CardDetail> {
     return Scaffold(
       appBar: appBar,
       body: Center(
-          // child: multiChoice(script),
-          child: ListView(
-        children: [
-          textQuestionCard(script),
-          singleChoice(script),
-          multiChoice(script),
-        ],
-      )),
+        child: ListView.builder(
+          itemCount: script.questions.length,
+          itemBuilder: (context, index) {
+            switch (script.questions[index]['type']) {
+              case "VIDEO":
+                {
+                  return videoQuestionCard(index);
+                }
+              case "TEXT":
+                {
+                  return textQuestionCard(index);
+                }
+                break;
+
+              case "NUMERIC":
+                {
+                  return textQuestionCard(index);
+                }
+
+              case "SINGLE_CHOICE":
+                {
+                  return singleChoice(index);
+                }
+                break;
+
+              case "MULTIPLE_CHOICE":
+                {
+                  return multiChoice(index);
+                }
+                break;
+
+              default:
+                {
+                  print("Invalid choice");
+                }
+                break;
+            }
+            return Container(
+              height: 0,
+              width: 0,
+            );
+          },
+
+          // children: [
+          //   textQuestionCard(script),
+          //   singleChoice(script),
+          //   multiChoice(script),
+          // ],
+        ),
+      ),
+    );
+  }
+
+  //VIDEO TYPE
+  Card videoQuestionCard(int index) {
+    return Card(
+      color: Color.fromARGB(255, 192, 190, 181),
+      child: Container(
+        height: 150,
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Text(script.questions[index]['title']),
+            ),
+            SizedBox(
+              width: 280,
+              height: 50,
+              child: CupertinoButton(
+                onPressed: () {
+                  //handleInput(context);
+                },
+                child: const Text(
+                  'Start Recording',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                ),
+                color: Colors.deepOrange,
+              ),
+            ),
+            const SizedBox(width: 80),
+          ],
+        ),
+      ),
     );
   }
 
   // TEXT & NUMERIC TYPE
-  Card textQuestionCard(Script script) {
+  Card textQuestionCard(int index) {
+    print(index);
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[2]['title']),
+            title: Text(script.questions[index]['title']),
           ),
           TextFormField(
+            maxLines: 3,
+            keyboardType:
+                index == 3 ? TextInputType.number : TextInputType.text,
             decoration: const InputDecoration(
               hintText: 'Enter answer',
             ),
@@ -118,7 +198,7 @@ class CardDetailState extends State<CardDetail> {
     return widgets;
   }
 
-  Card singleChoice(Script script) {
+  Card singleChoice(int index) {
     //double elevation = Platform.isAndroid ? 16 : 0;
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
@@ -126,7 +206,7 @@ class CardDetailState extends State<CardDetail> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[4]['title']),
+            title: Text(script.questions[index]['title']),
           ),
           Column(
             children: choiceQuestionCard(script),
@@ -143,18 +223,18 @@ class CardDetailState extends State<CardDetail> {
     ];
   }
 
-  DataTable _createDataTable(Script script) {
-    return DataTable(columns: _createColumns(), rows: _createRows(script));
+  DataTable _createDataTable(int index) {
+    return DataTable(columns: _createColumns(), rows: _createRows(index));
   }
 
-  List<DataRow> _createRows(Script script) {
-    List options = script.questions[5]['options'];
+  List<DataRow> _createRows(int index) {
+    List options = script.questions[index]['options'];
     List<DataRow> rows = [];
 
     for (int index = 0; index < options.length; index++) {
       rows.add(DataRow(
           cells: [
-            DataCell(Text('ASD')),
+            DataCell(Text(options[index])),
           ],
           selected: _selected[index],
           onSelectChanged: (bool selected) {
@@ -166,16 +246,16 @@ class CardDetailState extends State<CardDetail> {
     return rows;
   }
 
-  Card multiChoice(Script script) {
+  Card multiChoice(int index) {
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[5]['title']),
+            title: Text(script.questions[index]['title']),
           ),
-          Column(children: [_createDataTable(script)]),
+          Column(children: [_createDataTable(index)]),
           const SizedBox(width: 8),
         ],
       ),

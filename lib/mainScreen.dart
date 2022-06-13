@@ -35,7 +35,6 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   void didUpdateWidget(MainScreen oldWidget) {
-    print('didUpdateWidget()');
     super.didUpdateWidget(oldWidget);
   }
 
@@ -134,11 +133,11 @@ class MainScreenState extends State<MainScreen> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.file_copy_outlined),
-          label: 'Scripts',
+          label: 'Active',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.photo_camera),
-          label: 'Camera',
+          icon: Icon(Icons.check_sharp),
+          label: 'Completed',
         ),
       ],
       selectedItemColor: Colors.amber[800],

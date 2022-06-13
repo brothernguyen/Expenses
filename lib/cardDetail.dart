@@ -129,7 +129,7 @@ class CardDetailState extends State<CardDetail> {
               height: 50,
               child: CupertinoButton(
                 onPressed: () {
-                  //handleInput(context);
+                  updateData(script);
                 },
                 child: const Text(
                   'Start Recording',
@@ -147,7 +147,6 @@ class CardDetailState extends State<CardDetail> {
 
   // TEXT & NUMERIC TYPE
   Card textQuestionCard(int index) {
-    print(index);
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -181,12 +180,13 @@ class CardDetailState extends State<CardDetail> {
     //double elevation = Platform.isAndroid ? 16 : 0;
     List options = script.questions[4]['options'];
     List<Widget> widgets = [];
+    print(selectedChoice);
     for (var option in options) {
       widgets.add(
         RadioListTile(
-          value: option,
+          value: option['option1'],
           groupValue: selectedChoice,
-          title: Text(option),
+          title: Text(option["choice"]),
           onChanged: (val) {
             setSelectedChoice(val);
           },
@@ -234,7 +234,7 @@ class CardDetailState extends State<CardDetail> {
     for (int index = 0; index < options.length; index++) {
       rows.add(DataRow(
           cells: [
-            DataCell(Text(options[index])),
+            DataCell(Text(options[index]['option'])),
           ],
           selected: _selected[index],
           onSelectChanged: (bool selected) {
@@ -262,10 +262,10 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  // void updateData(Script item) {
-  //   var id = item.id.toString();
-  //   DBRef.child('scripts/$id').update({'title': 'BBBBB'});
-  // }
+  void updateData(Script item) {
+    var id = item.id.toString();
+    DBRef.child('scripts/$id').update({'title': 'BBBBB'});
+  }
 
   displayDialog(BuildContext context, Script script) {
     showDialog(

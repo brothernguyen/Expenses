@@ -26,11 +26,12 @@ class CardDetail extends StatefulWidget {
 class CardDetailState extends State<CardDetail> {
   final DBRef = FirebaseDatabase.instance.ref();
   TextEditingController _controller;
-  String selectedChoice = "";
   bool isDisplayDialog = true;
   bool isChecked = false;
   List<bool> _selected = [];
   Script script;
+  String selectedChoice = "";
+  List<bool> radioValues = [];
 
   void initState() {
     super.initState();
@@ -38,6 +39,14 @@ class CardDetailState extends State<CardDetail> {
     script = widget.item;
     List options = script.questions[5]['options'];
     _selected = List<bool>.generate(options.length, (int index) => false);
+
+    //Radio button values
+    List radioOptions = script.questions[4]['options'];
+    for (var item in radioOptions) {
+      radioValues.add(item['selected']);
+    }
+
+    print(radioValues);
   }
 
   @override
@@ -93,7 +102,7 @@ class CardDetailState extends State<CardDetail> {
 
               default:
                 {
-                  print("Invalid choice");
+                  //print("Invalid choice");
                 }
                 break;
             }
@@ -176,21 +185,22 @@ class CardDetailState extends State<CardDetail> {
   }
 
   // SINGLE CHOICE
-  List<Widget> choiceQuestionCard(Script script) {
+  List<Widget> singleChoiceQuestionCard(Script script) {
     //double elevation = Platform.isAndroid ? 16 : 0;
     List options = script.questions[4]['options'];
     List<Widget> widgets = [];
-    print(selectedChoice);
+
     for (var option in options) {
       widgets.add(
         RadioListTile(
-          value: option['option1'],
-          groupValue: selectedChoice,
+          value: option['selected'],
+          groupValue: radioValues,
           title: Text(option["choice"]),
           onChanged: (val) {
             setSelectedChoice(val);
           },
-          selected: selectedChoice == option,
+          // selected: radioValues == option['selected'],
+          selected: true,
           activeColor: Colors.green,
         ),
       );
@@ -209,7 +219,7 @@ class CardDetailState extends State<CardDetail> {
             title: Text(script.questions[index]['title']),
           ),
           Column(
-            children: choiceQuestionCard(script),
+            children: singleChoiceQuestionCard(script),
           ),
           const SizedBox(width: 8),
         ],
@@ -236,7 +246,7 @@ class CardDetailState extends State<CardDetail> {
           cells: [
             DataCell(Text(options[index]['option'])),
           ],
-          selected: _selected[index],
+          selected: options[index]['selected'],
           onSelectChanged: (bool selected) {
             setState(() {
               _selected[index] = selected;

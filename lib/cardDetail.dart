@@ -30,8 +30,8 @@ class CardDetailState extends State<CardDetail> {
   bool isChecked = false;
   List<bool> _selected = [];
   Script script;
-  String selectedChoice = "";
-  List<bool> radioValues = [];
+  bool selectedChoice = true;
+  List radioOptions = [];
 
   void initState() {
     super.initState();
@@ -41,12 +41,10 @@ class CardDetailState extends State<CardDetail> {
     _selected = List<bool>.generate(options.length, (int index) => false);
 
     //Radio button values
-    List radioOptions = script.questions[4]['options'];
-    for (var item in radioOptions) {
-      radioValues.add(item['selected']);
-    }
-
-    print(radioValues);
+    radioOptions = script.questions[4]['options'];
+    // for (var item in radioOptions) {
+    //   radioValues.add(item['selected']);
+    // }
   }
 
   @override
@@ -58,6 +56,13 @@ class CardDetailState extends State<CardDetail> {
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text(script.title),
+            trailing: IconButton(
+              icon: const Icon(Icons.done_all),
+              tooltip: 'Log out',
+              onPressed: () {
+                updateData(script);
+              },
+            ),
             automaticallyImplyLeading: true,
             leading: CupertinoNavigationBarBackButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -65,6 +70,15 @@ class CardDetailState extends State<CardDetail> {
           )
         : AppBar(
             title: Text(script.title),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.done_all),
+                tooltip: 'Log out',
+                onPressed: () {
+                  updateData(script);
+                },
+              ),
+            ],
           );
     return Scaffold(
       appBar: appBar,
@@ -122,7 +136,8 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  //VIDEO TYPE
+  // VIDEO TYPE
+  //==========================================================
   Card videoQuestionCard(int index) {
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
@@ -155,6 +170,7 @@ class CardDetailState extends State<CardDetail> {
   }
 
   // TEXT & NUMERIC TYPE
+  //==========================================================
   Card textQuestionCard(int index) {
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
@@ -178,38 +194,24 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  setSelectedChoice(String choice) {
-    setState(() {
-      selectedChoice = choice;
-    });
+  setSelectedChoice(Map<String, dynamic> option, bool value) {
+    for (int i = 0; i < radioOptions.length; i++) {
+      radioOptions[i]['selected'] = false;
+      if (radioOptions[i]['choice'] == option['choice']) {
+        setState(() {
+          radioOptions[i]['selected'] = true;
+        });
+      }
+    }
+    // setState(() {
+    // });
   }
 
   // SINGLE CHOICE
-  List<Widget> singleChoiceQuestionCard(Script script) {
-    //double elevation = Platform.isAndroid ? 16 : 0;
-    List options = script.questions[4]['options'];
-    List<Widget> widgets = [];
-
-    for (var option in options) {
-      widgets.add(
-        RadioListTile(
-          value: option['selected'],
-          groupValue: radioValues,
-          title: Text(option["choice"]),
-          onChanged: (val) {
-            setSelectedChoice(val);
-          },
-          // selected: radioValues == option['selected'],
-          selected: true,
-          activeColor: Colors.green,
-        ),
-      );
-    }
-    return widgets;
-  }
-
+  //==========================================================
   Card singleChoice(int index) {
-    //double elevation = Platform.isAndroid ? 16 : 0;
+    print(radioOptions);
+
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -219,8 +221,42 @@ class CardDetailState extends State<CardDetail> {
             title: Text(script.questions[index]['title']),
           ),
           Column(
-            children: singleChoiceQuestionCard(script),
+            // children: singleChoiceQuestionCard(script),
+            children: [buildRadios(radioOptions)],
           ),
+          const SizedBox(width: 8),
+        ],
+      ),
+    );
+  }
+
+  Widget buildRadios(List radioOptions) => Column(
+        children: radioOptions.map(
+          (option) {
+            return RadioListTile<bool>(
+              value: true,
+              groupValue: option['selected'],
+              title: Text(option["choice"]),
+              onChanged: (value) =>
+                  setState(() => setSelectedChoice(option, value)),
+              //onChanged: (value) => print(option),
+            );
+          },
+        ).toList(),
+      );
+
+  //MULTI CHOICE
+  //==========================================================
+  Card multiChoice(int index) {
+    return Card(
+      color: Color.fromARGB(255, 192, 190, 181),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            title: Text(script.questions[index]['title']),
+          ),
+          Column(children: [_createDataTable(index)]),
           const SizedBox(width: 8),
         ],
       ),
@@ -256,27 +292,21 @@ class CardDetailState extends State<CardDetail> {
     return rows;
   }
 
-  Card multiChoice(int index) {
-    return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            title: Text(script.questions[index]['title']),
-          ),
-          Column(children: [_createDataTable(index)]),
-          const SizedBox(width: 8),
-        ],
-      ),
-    );
-  }
-
   void updateData(Script item) {
     var id = item.id.toString();
-    DBRef.child('scripts/$id').update({'title': 'BBBBB'});
+    // Convert Dynamic type to String
+    // final List<String> updateList =
+    //     radioOptions.map((e) => e.toString()).toList();
+
+    // DBRef.child('scripts/$id').update({'title': 'BBBBB'});
+    // DBRef.child('scripts/$id/questions/4/').update({'options': updateList});
+
+    // print(map1.runtimeType);
+    // print(map1.toString());
   }
 
+  //DIALOG
+  //==========================================================
   displayDialog(BuildContext context, Script script) {
     showDialog(
       context: context,

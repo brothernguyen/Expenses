@@ -25,7 +25,9 @@ class CardDetail extends StatefulWidget {
 
 class CardDetailState extends State<CardDetail> {
   final DBRef = FirebaseDatabase.instance.ref();
-  TextEditingController _controller;
+  final textController = TextEditingController();
+  final numericController = TextEditingController();
+
   bool isDisplayDialog = true;
   bool isChecked = false;
   List _selected = [];
@@ -35,7 +37,6 @@ class CardDetailState extends State<CardDetail> {
 
   void initState() {
     super.initState();
-    _controller = TextEditingController();
     script = widget.item;
     //Radio button values
     radioOptions = script.questions[4]['options'];
@@ -44,7 +45,15 @@ class CardDetailState extends State<CardDetail> {
   }
 
   @override
+  void dispose() {
+    textController.dispose();
+    numericController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(textController.text.trim());
     Script script = widget.item;
     isDisplayDialog
         ? Future.delayed(Duration.zero, () => displayDialog(context, script))
@@ -89,13 +98,13 @@ class CardDetailState extends State<CardDetail> {
                 }
               case "TEXT":
                 {
-                  return textQuestionCard(index);
+                  return textQuestion(index);
                 }
                 break;
 
               case "NUMERIC":
                 {
-                  return textQuestionCard(index);
+                  return numericQuestion(index);
                 }
 
               case "SINGLE_CHOICE":
@@ -159,9 +168,9 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  // TEXT & NUMERIC TYPE
+  // TEXT QUESTION
   //==========================================================
-  Card textQuestionCard(int index) {
+  Card textQuestion(int index) {
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -171,9 +180,39 @@ class CardDetailState extends State<CardDetail> {
             title: Text(script.questions[index]['title']),
           ),
           TextFormField(
+            controller: textController,
             maxLines: 3,
-            keyboardType:
-                index == 3 ? TextInputType.number : TextInputType.text,
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+              hintText: 'Enter answer',
+            ),
+            onChanged: (value) {
+              setState(() {
+                textController.text = value.toString();
+              });
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
+    );
+  }
+
+  // NUMERIC QUESTION
+  //==========================================================
+  Card numericQuestion(int index) {
+    return Card(
+      color: Color.fromARGB(255, 192, 190, 181),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            title: Text(script.questions[index]['title']),
+          ),
+          TextFormField(
+            controller: numericController,
+            maxLines: 3,
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               hintText: 'Enter answer',
             ),
@@ -184,22 +223,9 @@ class CardDetailState extends State<CardDetail> {
     );
   }
 
-  setSelectedChoice(Map<String, dynamic> option, bool value) {
-    for (int i = 0; i < radioOptions.length; i++) {
-      radioOptions[i]['selected'] = false;
-      if (radioOptions[i]['choice'] == option['choice']) {
-        setState(() {
-          radioOptions[i]['selected'] = true;
-        });
-      }
-    }
-  }
-
   // SINGLE CHOICE
   //==========================================================
   Card singleChoice(int index) {
-    //print(radioOptions);
-
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -232,6 +258,17 @@ class CardDetailState extends State<CardDetail> {
           },
         ).toList(),
       );
+
+  setSelectedChoice(Map<String, dynamic> option, bool value) {
+    for (int i = 0; i < radioOptions.length; i++) {
+      radioOptions[i]['selected'] = false;
+      if (radioOptions[i]['choice'] == option['choice']) {
+        setState(() {
+          radioOptions[i]['selected'] = true;
+        });
+      }
+    }
+  }
 
   //MULTI CHOICE
   //==========================================================
@@ -282,6 +319,10 @@ class CardDetailState extends State<CardDetail> {
   void updateData(Script item) async {
     var id = item.id.toString();
 
+    // Text question
+    await DBRef.child('scripts/$id/questions/2/')
+        .update({'value': textController.text});
+
     // Single choi question
     List<Map<String, dynamic>> singleOptions = [];
     for (var option in radioOptions) {
@@ -290,7 +331,7 @@ class CardDetailState extends State<CardDetail> {
     await DBRef.child('scripts/$id/questions/4/')
         .update({'options': singleOptions});
 
-    // Multiple choi question
+    // Multiple choice question
     List<Map<String, dynamic>> multipleOptions = [];
     for (var option in _selected) {
       multipleOptions.add(option);

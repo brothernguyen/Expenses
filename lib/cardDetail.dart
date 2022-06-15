@@ -279,18 +279,26 @@ class CardDetailState extends State<CardDetail> {
     return rows;
   }
 
-  void updateData(Script item) {
+  void updateData(Script item) async {
     var id = item.id.toString();
 
-    List<Map<String, dynamic>> options = [];
+    // Single choi question
+    List<Map<String, dynamic>> singleOptions = [];
     for (var option in radioOptions) {
-      options.add(option);
+      singleOptions.add(option);
     }
-    // String jsonSingleChoice = jsonEncode(options);
+    await DBRef.child('scripts/$id/questions/4/')
+        .update({'options': singleOptions});
 
-    DBRef.child('scripts/$id/questions/4/').update({'options': options});
+    // Multiple choi question
+    List<Map<String, dynamic>> multipleOptions = [];
+    for (var option in _selected) {
+      multipleOptions.add(option);
+    }
+    await DBRef.child('scripts/$id/questions/5/')
+        .update({'options': multipleOptions});
 
-    // print(options.runtimeType);
+    print(multipleOptions);
   }
 
   //DIALOG
@@ -322,15 +330,4 @@ class CardDetailState extends State<CardDetail> {
       },
     );
   }
-}
-
-class MultiChoiceQuestion {
-  String option;
-  bool selected;
-
-  MultiChoiceQuestion(this.option, this.selected);
-  Map toJson() => {
-        'option': option,
-        'selected': selected,
-      };
 }

@@ -28,7 +28,7 @@ class CardDetailState extends State<CardDetail> {
   TextEditingController _controller;
   bool isDisplayDialog = true;
   bool isChecked = false;
-  List<bool> _selected = [];
+  List _selected = [];
   Script script;
   bool selectedChoice = true;
   List radioOptions = [];
@@ -37,14 +37,10 @@ class CardDetailState extends State<CardDetail> {
     super.initState();
     _controller = TextEditingController();
     script = widget.item;
-    List options = script.questions[5]['options'];
-    _selected = List<bool>.generate(options.length, (int index) => false);
-
     //Radio button values
     radioOptions = script.questions[4]['options'];
-    // for (var item in radioOptions) {
-    //   radioValues.add(item['selected']);
-    // }
+    //Checkbox values
+    _selected = script.questions[5]['options'];
   }
 
   @override
@@ -125,12 +121,6 @@ class CardDetailState extends State<CardDetail> {
               width: 0,
             );
           },
-
-          // children: [
-          //   textQuestionCard(script),
-          //   singleChoice(script),
-          //   multiChoice(script),
-          // ],
         ),
       ),
     );
@@ -210,7 +200,7 @@ class CardDetailState extends State<CardDetail> {
   // SINGLE CHOICE
   //==========================================================
   Card singleChoice(int index) {
-    print(radioOptions);
+    //print(radioOptions);
 
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
@@ -273,19 +263,18 @@ class CardDetailState extends State<CardDetail> {
     return DataTable(columns: _createColumns(), rows: _createRows(index));
   }
 
-  List<DataRow> _createRows(int index) {
-    List options = script.questions[index]['options'];
+  List<DataRow> _createRows(int i) {
     List<DataRow> rows = [];
-
-    for (int index = 0; index < options.length; index++) {
+    for (int index = 0; index < _selected.length; index++) {
+      //print(_selected[index]['selected']);
       rows.add(DataRow(
           cells: [
-            DataCell(Text(options[index]['option'])),
+            DataCell(Text(_selected[index]['option'])),
           ],
-          selected: options[index]['selected'],
+          selected: _selected[index]['selected'],
           onSelectChanged: (bool selected) {
             setState(() {
-              _selected[index] = selected;
+              _selected[index]['selected'] = selected;
             });
           }));
     }

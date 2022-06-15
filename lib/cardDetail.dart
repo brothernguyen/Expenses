@@ -142,9 +142,9 @@ class CardDetailState extends State<CardDetail> {
               width: 280,
               height: 50,
               child: CupertinoButton(
-                onPressed: () {
-                  updateData(script);
-                },
+                // onPressed: () {
+                //   updateData(script);
+                // },
                 child: const Text(
                   'Start Recording',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
@@ -193,8 +193,6 @@ class CardDetailState extends State<CardDetail> {
         });
       }
     }
-    // setState(() {
-    // });
   }
 
   // SINGLE CHOICE
@@ -283,15 +281,16 @@ class CardDetailState extends State<CardDetail> {
 
   void updateData(Script item) {
     var id = item.id.toString();
-    // Convert Dynamic type to String
-    // final List<String> updateList =
-    //     radioOptions.map((e) => e.toString()).toList();
 
-    // DBRef.child('scripts/$id').update({'title': 'BBBBB'});
-    // DBRef.child('scripts/$id/questions/4/').update({'options': updateList});
+    List<Map<String, dynamic>> options = [];
+    for (var option in radioOptions) {
+      options.add(option);
+    }
+    // String jsonSingleChoice = jsonEncode(options);
 
-    // print(map1.runtimeType);
-    // print(map1.toString());
+    DBRef.child('scripts/$id/questions/4/').update({'options': options});
+
+    // print(options.runtimeType);
   }
 
   //DIALOG
@@ -323,4 +322,15 @@ class CardDetailState extends State<CardDetail> {
       },
     );
   }
+}
+
+class MultiChoiceQuestion {
+  String option;
+  bool selected;
+
+  MultiChoiceQuestion(this.option, this.selected);
+  Map toJson() => {
+        'option': option,
+        'selected': selected,
+      };
 }

@@ -171,6 +171,7 @@ class CardDetailState extends State<CardDetail> {
   // TEXT QUESTION
   //==========================================================
   Card textQuestion(int index) {
+    String defaultText = script.questions[2]['value'].toString();
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -179,13 +180,12 @@ class CardDetailState extends State<CardDetail> {
           ListTile(
             title: Text(script.questions[index]['title']),
           ),
-          TextFormField(
+          TextField(
             controller: textController,
             maxLines: 3,
             keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              hintText: 'Enter answer',
-            ),
+            decoration: InputDecoration(
+                hintText: defaultText.isEmpty ? 'Enter value' : defaultText),
             onChanged: (value) {
               setState(() {
                 textController.text = value.toString();
@@ -201,6 +201,7 @@ class CardDetailState extends State<CardDetail> {
   // NUMERIC QUESTION
   //==========================================================
   Card numericQuestion(int index) {
+    String defaultNumeric = script.questions[3]['value'].toString();
     return Card(
       color: Color.fromARGB(255, 192, 190, 181),
       child: Column(
@@ -213,8 +214,9 @@ class CardDetailState extends State<CardDetail> {
             controller: numericController,
             maxLines: 3,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              hintText: 'Enter answer',
+            decoration: InputDecoration(
+              hintText:
+                  defaultNumeric.isEmpty ? 'Enter answer' : defaultNumeric,
             ),
           ),
           const SizedBox(width: 8),
@@ -322,6 +324,10 @@ class CardDetailState extends State<CardDetail> {
     // Text question
     await DBRef.child('scripts/$id/questions/2/')
         .update({'value': textController.text});
+
+    // Numeric question
+    await DBRef.child('scripts/$id/questions/3/')
+        .update({'value': numericController.text});
 
     // Single choi question
     List<Map<String, dynamic>> singleOptions = [];

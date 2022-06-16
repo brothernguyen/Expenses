@@ -56,16 +56,17 @@ class CardDetailState extends State<CardDetail> {
     print(textController.text.trim());
     Script script = widget.item;
     isDisplayDialog
-        ? Future.delayed(Duration.zero, () => displayDialog(context, script))
+        ? Future.delayed(
+            Duration.zero, () => displayDialog(context, script, true))
         : "";
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text(script.title),
             trailing: IconButton(
               icon: const Icon(Icons.done_all),
-              tooltip: 'Log out',
+              tooltip: 'Done',
               onPressed: () {
-                updateData(script);
+                displayDialog(context, script, false);
               },
             ),
             automaticallyImplyLeading: true,
@@ -139,7 +140,7 @@ class CardDetailState extends State<CardDetail> {
   //==========================================================
   Card videoQuestionCard(int index) {
     return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
+      color: Color.fromARGB(255, 247, 246, 243),
       child: Container(
         height: 150,
         child: Column(
@@ -148,15 +149,13 @@ class CardDetailState extends State<CardDetail> {
               title: Text(script.questions[index]['title']),
             ),
             SizedBox(
-              width: 280,
+              width: 240,
               height: 50,
               child: CupertinoButton(
-                // onPressed: () {
-                //   updateData(script);
-                // },
+                onPressed: () {},
                 child: const Text(
                   'Start Recording',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                 ),
                 color: Colors.deepOrange,
               ),
@@ -173,24 +172,29 @@ class CardDetailState extends State<CardDetail> {
   Card textQuestion(int index) {
     String defaultText = script.questions[2]['value'].toString();
     return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
+      color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
             title: Text(script.questions[index]['title']),
           ),
-          TextField(
-            controller: textController,
-            maxLines: 3,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-                hintText: defaultText.isEmpty ? 'Enter value' : defaultText),
-            onChanged: (value) {
-              setState(() {
-                textController.text = value.toString();
-              });
-            },
+          Container(
+            height: 50,
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+            //color: Color.fromARGB(255, 219, 218, 211),
+            child: TextField(
+              controller: textController,
+              maxLines: 3,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                  hintText: defaultText.isEmpty ? 'Enter value' : defaultText),
+              onSubmitted: (value) {
+                setState(() {
+                  textController.text = value.toString();
+                });
+              },
+            ),
           ),
           const SizedBox(width: 8),
         ],
@@ -203,20 +207,25 @@ class CardDetailState extends State<CardDetail> {
   Card numericQuestion(int index) {
     String defaultNumeric = script.questions[3]['value'].toString();
     return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
+      color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
             title: Text(script.questions[index]['title']),
           ),
-          TextFormField(
-            controller: numericController,
-            maxLines: 3,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              hintText:
-                  defaultNumeric.isEmpty ? 'Enter answer' : defaultNumeric,
+          Container(
+            height: 50,
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+            //color: Color.fromARGB(255, 219, 218, 211),
+            child: TextFormField(
+              controller: numericController,
+              maxLines: 3,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                hintText:
+                    defaultNumeric.isEmpty ? 'Enter answer' : defaultNumeric,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -229,7 +238,7 @@ class CardDetailState extends State<CardDetail> {
   //==========================================================
   Card singleChoice(int index) {
     return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
+      color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -276,7 +285,7 @@ class CardDetailState extends State<CardDetail> {
   //==========================================================
   Card multiChoice(int index) {
     return Card(
-      color: Color.fromARGB(255, 192, 190, 181),
+      color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -350,26 +359,71 @@ class CardDetailState extends State<CardDetail> {
 
   //DIALOG
   //==========================================================
-  displayDialog(BuildContext context, Script script) {
+  displayDialog(BuildContext context, Script script, bool isStartMessage) {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(script.questions[0]['type']),
-          content: Text(script.questions[0]['title']),
+          title: isStartMessage
+              ? Text(
+                  'Welcome',
+                  textAlign: TextAlign.center,
+                )
+              : Text(
+                  'Thank you',
+                  textAlign: TextAlign.center,
+                ),
+          content: isStartMessage
+              ? Text(script.questions[0]['title'])
+              : Text(script.questions[6]['title']),
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  child: const Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    setState(() {
-                      isDisplayDialog = false;
-                    });
-                  },
-                ),
+                if (isStartMessage) ...[
+                  TextButton(
+                    child: const Text(
+                      'OK',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        isDisplayDialog = false;
+                      });
+                    },
+                  )
+                ] else ...[
+                  TextButton(
+                    child: const Text(
+                      'Submit',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      updateData(script);
+                      Navigator.of(context).pop();
+                      setState(() {
+                        isDisplayDialog = false;
+                      });
+                    },
+                  ),
+                  TextButton(
+                    child: const Text(
+                      'Cancel',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        isDisplayDialog = false;
+                      });
+                    },
+                  )
+                ]
               ],
             ),
           ],

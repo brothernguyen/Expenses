@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_complete_guide/auth.dart';
+import 'package:flutter_complete_guide/completed.dart';
 import 'package:flutter_complete_guide/login.dart';
 import 'package:flutter_complete_guide/script.dart';
 import 'package:http/http.dart' as http;
@@ -92,7 +93,7 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     String appBarTitle =
-        _selectedIndex == 0 ? 'Data Question' : 'Choose an image';
+        _selectedIndex == 0 ? 'Data Question' : 'Completed Scripts';
     final PreferredSizeWidget appBar =
         AppBar(title: Text(appBarTitle), actions: <Widget>[
       IconButton(
@@ -123,7 +124,7 @@ class MainScreenState extends State<MainScreen> {
   Widget _tabBarItems(BuildContext context, int _selectedIndex) {
     List<Widget> widgetOptions = <Widget>[
       Center(child: _buildList(context)),
-      PickImage(),
+      Completed(),
     ];
     return widgetOptions.elementAt(_selectedIndex);
   }
@@ -237,9 +238,16 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Card _card(int index) {
-    //var imgUrl = "https://picsum.photos/120/250?random=${index.toString()}";
     double elevation = Platform.isAndroid ? 16 : 0;
-    String isPublished = items[index].isCompleted ? 'Completed' : 'Uncompleted';
+    bool isCompleted = items[index].isCompleted;
+    if (isCompleted) {
+      return Card(
+        child: Container(
+          height: 0,
+          width: 0,
+        ),
+      );
+    }
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),

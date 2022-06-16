@@ -53,7 +53,6 @@ class CardDetailState extends State<CardDetail> {
 
   @override
   Widget build(BuildContext context) {
-    print(textController.text.trim());
     Script script = widget.item;
     isDisplayDialog
         ? Future.delayed(
@@ -264,7 +263,6 @@ class CardDetailState extends State<CardDetail> {
               title: Text(option["choice"]),
               onChanged: (value) =>
                   setState(() => setSelectedChoice(option, value)),
-              //onChanged: (value) => print(option),
             );
           },
         ).toList(),
@@ -312,7 +310,6 @@ class CardDetailState extends State<CardDetail> {
   List<DataRow> _createRows(int i) {
     List<DataRow> rows = [];
     for (int index = 0; index < _selected.length; index++) {
-      //print(_selected[index]['selected']);
       rows.add(DataRow(
           cells: [
             DataCell(Text(_selected[index]['option'])),
@@ -327,6 +324,8 @@ class CardDetailState extends State<CardDetail> {
     return rows;
   }
 
+  //UPDATE DATA
+  //==========================================================
   void updateData(Script item) async {
     var id = item.id.toString();
 
@@ -354,7 +353,8 @@ class CardDetailState extends State<CardDetail> {
     await DBRef.child('scripts/$id/questions/5/')
         .update({'options': multipleOptions});
 
-    print(multipleOptions);
+    // Script status
+    await DBRef.child('scripts/$id/').update({'isCompleted': true});
   }
 
   //DIALOG

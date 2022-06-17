@@ -112,7 +112,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               width: 240,
               height: 50,
               child: CupertinoButton(
-                onPressed: () {},
+                //onPressed: () {},
                 child: const Text(
                   'Start Recording',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -144,6 +144,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
             //color: Color.fromARGB(255, 219, 218, 211),
             child: TextField(
+              readOnly: true,
               maxLines: 3,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
@@ -173,6 +174,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
             //color: Color.fromARGB(255, 219, 218, 211),
             child: TextFormField(
+              readOnly: true,
               maxLines: 3,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -212,12 +214,10 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
         children: radioOptions.map(
           (option) {
             return RadioListTile<bool>(
-              value: true,
-              groupValue: option['selected'],
-              title: Text(option["choice"]),
-              onChanged: (value) =>
-                  setState(() => setSelectedChoice(option, value)),
-            );
+                value: true,
+                groupValue: option['selected'],
+                title: Text(option["choice"]),
+                onChanged: null);
           },
         ).toList(),
       );
@@ -269,11 +269,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             DataCell(Text(_selected[index]['option'])),
           ],
           selected: _selected[index]['selected'],
-          onSelectChanged: (bool selected) {
-            setState(() {
-              _selected[index]['selected'] = selected;
-            });
-          }));
+          onSelectChanged: (bool selected) {}));
     }
     return rows;
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_complete_guide/completedCardDetail.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import './script.dart';
@@ -88,12 +88,21 @@ class _CompletedState extends State<Completed> {
               return Column(
                 children: [
                   GestureDetector(
-                    // onTap: () => {onCardTapped(context, items[index])},
+                    onTap: () => {onCardTapped(context, items[index])},
                     child: _card(index),
                   ),
                 ],
               );
             });
+  }
+
+  onCardTapped(context, Script item) {
+    if (item.isCompleted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CompletedCardDetail(item)),
+      );
+    }
   }
 
   Card _card(int index) {

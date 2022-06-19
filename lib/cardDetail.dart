@@ -180,7 +180,7 @@ class CardDetailState extends State<CardDetail> {
           ),
           Container(
             height: 50,
-            padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 5),
             //color: Color.fromARGB(255, 219, 218, 211),
             child: TextField(
               controller: textController,
@@ -215,7 +215,7 @@ class CardDetailState extends State<CardDetail> {
           ),
           Container(
             height: 50,
-            padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 5),
             //color: Color.fromARGB(255, 219, 218, 211),
             child: TextFormField(
               controller: numericController,

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_complete_guide/question.dart';
 import 'package:flutter_complete_guide/script.dart';
 import 'package:firebase_database/firebase_database.dart';
+import './camera.dart';
 
 //import './login.dart';
 import 'package:http/http.dart' as http;
@@ -147,16 +148,21 @@ class CardDetailState extends State<CardDetail> {
             ListTile(
               title: Text(script.questions[index]['title']),
             ),
-            SizedBox(
-              width: 240,
-              height: 50,
-              child: CupertinoButton(
-                onPressed: () {},
-                child: const Text(
-                  'Start Recording',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: SizedBox(
+                width: 240,
+                height: 50,
+                child: CupertinoButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/camera_screen');
+                  },
+                  child: const Text(
+                    'Start Recording',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
+                  color: Colors.deepOrange,
                 ),
-                color: Colors.deepOrange,
               ),
             ),
             const SizedBox(width: 80),

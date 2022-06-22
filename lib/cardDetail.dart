@@ -81,7 +81,8 @@ class CardDetailState extends State<CardDetail> {
                 icon: const Icon(Icons.done_all),
                 tooltip: 'Log out',
                 onPressed: () {
-                  updateData(script);
+                  // updateData(script);
+                  displayDialog(context, script, false);
                 },
               ),
             ],

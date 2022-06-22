@@ -19,7 +19,6 @@ List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  cameras = await availableCameras();
 
   runApp(NavRoot());
 }

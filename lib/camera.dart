@@ -68,12 +68,12 @@ class _CameraState extends State<Camera> {
               ),
               SizedBox(height: 48),
               ButtonWidget(
-                  text: 'Upload File',
-                  icon: Icons.cloud_upload_outlined,
-                  // onClicked: uploadFile,
-                  onClicked: () {
-                    file != null ? uploadFile(context) : null;
-                  }),
+                text: 'Upload File',
+                icon: Icons.cloud_upload_outlined,
+                onClicked: () {
+                  file != null ? uploadFile(context) : null;
+                },
+              ),
               SizedBox(height: 20),
               task != null ? buildUploadStatus(task) : Container(),
             ],

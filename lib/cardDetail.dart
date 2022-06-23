@@ -368,7 +368,8 @@ class CardDetailState extends State<CardDetail> {
         .update({'options': multipleOptions});
 
     // Script status
-    await DBRef.child('scripts/$id/').update({'isCompleted': true});
+    await DBRef.child('scripts/$id/')
+        .update({'isCompleted': true}).then((_) => widget.refreshMainPage());
   }
 
   //DIALOG
@@ -418,7 +419,6 @@ class CardDetailState extends State<CardDetail> {
                     ),
                     onPressed: () {
                       updateData(script);
-                      widget.refreshMainPage();
                       Navigator.of(context).pop();
                       setState(() {
                         isDisplayDialog = false;

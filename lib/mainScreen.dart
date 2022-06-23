@@ -35,12 +35,6 @@ class MainScreenState extends State<MainScreen> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print('==>: didChangeDependencies');
-  }
-
-  @override
   void didUpdateWidget(MainScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('==>: didUpdateWidget');
@@ -48,12 +42,11 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
-    print('dispose()');
     super.dispose();
   }
 
   Future<void> fetchScripts() async {
-    print('fetchScript!!!');
+    print('==>fetchScript!!!');
     setState(() {
       isLoading = true;
     });

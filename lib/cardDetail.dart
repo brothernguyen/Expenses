@@ -14,8 +14,10 @@ import 'package:intl/intl.dart';
 // ignore: must_be_immutable
 class CardDetail extends StatefulWidget {
   Script item;
-  CardDetail(Script item, {Key key}) : super(key: key) {
+  VoidCallback refreshMainPage;
+  CardDetail(Script item, this.refreshMainPage, {Key key}) : super(key: key) {
     this.item = item;
+    this.refreshMainPage = refreshMainPage;
   }
 
   @override
@@ -416,6 +418,7 @@ class CardDetailState extends State<CardDetail> {
                     ),
                     onPressed: () {
                       updateData(script);
+                      widget.refreshMainPage();
                       Navigator.of(context).pop();
                       setState(() {
                         isDisplayDialog = false;

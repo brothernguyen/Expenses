@@ -35,8 +35,15 @@ class MainScreenState extends State<MainScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('==>: didChangeDependencies');
+  }
+
+  @override
   void didUpdateWidget(MainScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
+    print('==>: didUpdateWidget');
   }
 
   @override
@@ -46,6 +53,7 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Future<void> fetchScripts() async {
+    print('fetchScript!!!');
     setState(() {
       isLoading = true;
     });
@@ -232,7 +240,7 @@ class MainScreenState extends State<MainScreen> {
     if (!item.isCompleted) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CardDetail(item)),
+        MaterialPageRoute(builder: (context) => CardDetail(item, fetchScripts)),
       );
     }
   }

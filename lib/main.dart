@@ -33,7 +33,7 @@ class NavRoot extends StatelessWidget {
       routes: {
         '/': (context) => Auth(),
         '/main_screen': (context) => MainScreen(),
-        '/camera_screen': ((context) => Camera())
+        //'/camera_screen': ((context) => Camera())
         //'/detail_screen': (context) => CardDetail(),
       },
     );

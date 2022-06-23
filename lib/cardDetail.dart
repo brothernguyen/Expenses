@@ -156,7 +156,12 @@ class CardDetailState extends State<CardDetail> {
                 height: 50,
                 child: CupertinoButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/camera_screen');
+                    //Navigator.pushNamed(context, '/camera_screen');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Camera(script.id)),
+                    );
                   },
                   child: const Text(
                     'Start Recording',

@@ -14,7 +14,10 @@ import 'api/firebase_api.dart';
 import 'widget/button_widget.dart';
 
 class Camera extends StatefulWidget {
-  const Camera({Key key}) : super(key: key);
+  int index;
+  Camera(int index, {Key key}) : super(key: key) {
+    this.index = index;
+  }
 
   @override
   State<Camera> createState() => _CameraState();
@@ -25,9 +28,11 @@ String path;
 class _CameraState extends State<Camera> {
   UploadTask task;
   File file;
+  int index;
 
   @override
   void initState() {
+    index = widget.index;
     super.initState();
   }
 
@@ -38,6 +43,7 @@ class _CameraState extends State<Camera> {
 
   @override
   Widget build(BuildContext context) {
+    print('==>index: $index');
     final fileName = file != null ? basename(file.path) : 'No File Selected';
 
     return Scaffold(
@@ -62,10 +68,12 @@ class _CameraState extends State<Camera> {
               ),
               SizedBox(height: 48),
               ButtonWidget(
-                text: 'Upload File',
-                icon: Icons.cloud_upload_outlined,
-                onClicked: uploadFile,
-              ),
+                  text: 'Upload File',
+                  icon: Icons.cloud_upload_outlined,
+                  // onClicked: uploadFile,
+                  onClicked: () {
+                    file != null ? uploadFile(context) : null;
+                  }),
               SizedBox(height: 20),
               task != null ? buildUploadStatus(task) : Container(),
             ],
@@ -85,21 +93,38 @@ class _CameraState extends State<Camera> {
     setState(() => file = File(path));
   }
 
-  Future uploadFile() async {
+  Future uploadFile(BuildContext context) async {
     if (file == null) return;
 
     final fileName = basename(file.path);
     final destination = '$fileName';
+    var snapshot = null;
+    String videoUrl = '';
 
     task = FirebaseApi.uploadFile(destination, file);
     setState(() {});
 
     if (task == null) return;
+    try {
+      snapshot = await task.whenComplete(() {});
+      videoUrl = await snapshot.ref.getDownloadURL();
+      print('Download-Link: $videoUrl');
+    } catch (error) {
+      print('==>error: $error');
+      displayDialog(context);
+    }
+    // final snapshot = await task.whenComplete(() {});
+    // final videoUrl = await snapshot.ref.getDownloadURL();
 
-    final snapshot = await task.whenComplete(() {});
-    final urlDownload = await snapshot.ref.getDownloadURL();
+    if (!videoUrl.isEmpty) {
+      final id = index.toString();
+      final DBRef = FirebaseDatabase.instance.ref();
+      await DBRef.child('scripts/$id/').update({'videoUrl': videoUrl});
 
-    print('Download-Link: $urlDownload');
+      setState(() {
+        file = null;
+      });
+    }
   }
 
   Widget buildUploadStatus(UploadTask task) => StreamBuilder<TaskSnapshot>(
@@ -119,4 +144,20 @@ class _CameraState extends State<Camera> {
           }
         },
       );
+
+  displayDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Server error!'),
+        content: const Text('Please try it again'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 }

@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:video_player/video_player.dart';
 import './question.dart';
 import './script.dart';
-import './widget/VideoPlayer.dart';
+import 'widget/Player.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class CompletedCardDetail extends StatefulWidget {
@@ -117,7 +118,10 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => VideoPlayer(script.id)),
+                        builder: (context) => Player(
+                            script.id,
+                            VideoPlayerController.network(
+                                'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))),
                   );
                 },
                 child: const Text(

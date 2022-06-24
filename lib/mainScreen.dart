@@ -37,7 +37,6 @@ class MainScreenState extends State<MainScreen> {
   @override
   void didUpdateWidget(MainScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print('==>: didUpdateWidget');
   }
 
   @override
@@ -46,7 +45,6 @@ class MainScreenState extends State<MainScreen> {
   }
 
   Future<void> fetchScripts() async {
-    print('==>fetchScript!!!');
     setState(() {
       isLoading = true;
     });

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './question.dart';
 import './script.dart';
+import './widget/VideoPlayer.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class CompletedCardDetail extends StatefulWidget {
@@ -112,9 +113,15 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               width: 240,
               height: 50,
               child: CupertinoButton(
-                //onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => VideoPlayer(script.id)),
+                  );
+                },
                 child: const Text(
-                  'Start Recording',
+                  'Play Video',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                 ),
                 color: Colors.deepOrange,

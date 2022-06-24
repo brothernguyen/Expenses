@@ -39,6 +39,7 @@ class _CameraState extends State<Camera> {
   @override
   void dispose() {
     super.dispose();
+    file = null;
   }
 
   @override

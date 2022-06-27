@@ -1,12 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:video_player/video_player.dart';
-import './question.dart';
 import './script.dart';
-import 'widget/Player.dart';
-import 'package:firebase_database/firebase_database.dart';
 
+// ignore: must_be_immutable
 class CompletedCardDetail extends StatefulWidget {
   Script item;
   CompletedCardDetail(Script item, {Key key}) : super(key: key) {
@@ -115,14 +112,8 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               height: 50,
               child: CupertinoButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Player(
-                            script.id,
-                            VideoPlayerController.network(
-                                'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'))),
-                  );
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChewiePlayer()));
                 },
                 child: const Text(
                   'Play Video',

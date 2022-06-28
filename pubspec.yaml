@@ -54,9 +54,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/splash.jpg"
+  image_path: "assets/images/vidlet_butterfly.png"
   adaptive_icon_background: "#191919"
-  adaqptive_icon_foreground: "assets/images/splash.jpg"
+  adaqptive_icon_foreground: "assets/images/vidlet_butterfly.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -74,7 +74,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - assets/images/logo-vidlet-butterfly.png
+    - assets/images/vidlet_butterfly.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

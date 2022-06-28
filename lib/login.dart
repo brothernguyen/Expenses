@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Image.asset('assets/images/logo-vidlet-butterfly.png'),
+        title: Image.asset('assets/images/vidlet_butterfly.png'),
       ),
       body: Center(
         child: SingleChildScrollView(

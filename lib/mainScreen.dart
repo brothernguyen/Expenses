@@ -162,7 +162,7 @@ class MainScreenState extends State<MainScreen> {
               color: Colors.white,
             ),
             child: Image.asset(
-              'assets/images/logo-vidlet-butterfly.png',
+              'assets/images/vidlet_butterfly.png',
               scale: 1.2,
             ),
           ),

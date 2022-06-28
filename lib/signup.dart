@@ -99,7 +99,7 @@ class _SignUpState extends State<SignUp> {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Image.asset('assets/images/logo-vidlet-butterfly.png'),
+        title: Image.asset('assets/images/vidlet_butterfly.png'),
       ),
       body: Center(
         child: SingleChildScrollView(

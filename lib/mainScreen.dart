@@ -147,6 +147,7 @@ class MainScreenState extends State<MainScreen> {
   }
 
   void onBottomBarTapped(int index) {
+    fetchScripts();
     setState(() {
       _selectedIndex = index;
     });

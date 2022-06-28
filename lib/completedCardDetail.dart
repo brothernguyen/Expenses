@@ -1,13 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:http/http.dart' as http;
 import './script.dart';
 
 // ignore: must_be_immutable
 class CompletedCardDetail extends StatefulWidget {
   Script item;
-  CompletedCardDetail(Script item, {Key key}) : super(key: key) {
+  VoidCallback refreshCompletedPage;
+  CompletedCardDetail(Script item, this.refreshCompletedPage, {Key key})
+      : super(key: key) {
     this.item = item;
+    this.refreshCompletedPage = refreshCompletedPage;
   }
 
   @override
@@ -21,6 +26,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   Script script;
   bool selectedChoice = true;
   List radioOptions = [];
+  final DBRef = FirebaseDatabase.instance.ref();
 
   void initState() {
     super.initState();
@@ -41,10 +47,24 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             leading: CupertinoNavigationBarBackButton(
               onPressed: () => Navigator.of(context).pop(),
             ),
+            trailing: IconButton(
+              icon: const Icon(Icons.playlist_remove),
+              color: Colors.blueAccent,
+              onPressed: () {
+                resetData(script);
+              },
+            ),
           )
-        : AppBar(
-            title: Text(script.title),
-          );
+        : AppBar(title: Text(script.title), actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.playlist_remove),
+              color: Colors.white,
+              onPressed: () {
+                resetData(script);
+              },
+            ),
+          ]);
+
     return Scaffold(
       appBar: appBar,
       body: Center(
@@ -111,10 +131,10 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               width: 240,
               height: 50,
               child: CupertinoButton(
-                onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => ChewiePlayer()));
-                },
+                // onPressed: () {
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => ChewiePlayer()));
+                // },
                 child: const Text(
                   'Play Video',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -224,16 +244,16 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
         ).toList(),
       );
 
-  setSelectedChoice(Map<String, dynamic> option, bool value) {
-    for (int i = 0; i < radioOptions.length; i++) {
-      radioOptions[i]['selected'] = false;
-      if (radioOptions[i]['choice'] == option['choice']) {
-        setState(() {
-          radioOptions[i]['selected'] = true;
-        });
-      }
-    }
-  }
+  // setSelectedChoice(Map<String, dynamic> option, bool value) {
+  //   for (int i = 0; i < radioOptions.length; i++) {
+  //     radioOptions[i]['selected'] = false;
+  //     if (radioOptions[i]['choice'] == option['choice']) {
+  //       setState(() {
+  //         radioOptions[i]['selected'] = true;
+  //       });
+  //     }
+  //   }
+  // }
 
   //MULTI CHOICE
   //==========================================================
@@ -274,5 +294,57 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
           onSelectChanged: (bool selected) {}));
     }
     return rows;
+  }
+
+  //RESET DATA
+  //==========================================================
+  resetSelectedChoice() {
+    for (int i = 0; i < radioOptions.length; i++) {
+      radioOptions[i]['selected'] = false;
+    }
+  }
+
+  resetMultipleChoice() {
+    List<Map<String, dynamic>> multipleOptions = [];
+    for (int i = 0; i < _selected.length; i++) {
+      _selected[i]['selected'] = false;
+    }
+  }
+
+  void resetData(Script item) async {
+    var id = item.id.toString();
+    resetSelectedChoice();
+    resetMultipleChoice();
+
+    // Video question
+    await DBRef.child('scripts/$id/').update({'videoUrl': ""});
+
+    // Text question
+    await DBRef.child('scripts/$id/questions/2/').update({'value': ""});
+
+    // Numeric question
+    await DBRef.child('scripts/$id/questions/3/').update({'value': ""});
+
+    // Single choi question
+    List<Map<String, dynamic>> singleOptions = [];
+    for (var option in radioOptions) {
+      singleOptions.add(option);
+    }
+    await DBRef.child('scripts/$id/questions/4/')
+        .update({'options': singleOptions});
+
+    // Multiple choice question
+    List<Map<String, dynamic>> multipleOptions = [];
+    for (var option in _selected) {
+      multipleOptions.add(option);
+    }
+    await DBRef.child('scripts/$id/questions/5/')
+        .update({'options': multipleOptions});
+
+    // Script status
+    await DBRef.child('scripts/$id/')
+        .update({'isCompleted': false})
+        .then((_) => widget.refreshCompletedPage())
+        .then((_) => Navigator.of(context).pop());
   }
 }

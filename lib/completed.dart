@@ -46,19 +46,6 @@ class _CompletedState extends State<Completed> {
               });
     } catch (error) {
       print(error.toString());
-      return showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-                title: Text(
-                  "An error occurred",
-                ),
-                content: Text(error.toString()),
-                actions: <Widget>[
-                  TextButton(
-                      onPressed: () => {Navigator.of(ctx).pop()},
-                      child: Text('Okey'))
-                ],
-              ));
     }
   }
 
@@ -100,7 +87,8 @@ class _CompletedState extends State<Completed> {
     if (item.isCompleted) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => CompletedCardDetail(item)),
+        MaterialPageRoute(
+            builder: (context) => CompletedCardDetail(item, fetchScripts)),
       );
     }
   }

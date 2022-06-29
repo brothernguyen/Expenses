@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ import 'api/firebase_api.dart';
 import 'widget/button_widget.dart';
 
 class Camera extends StatefulWidget {
-  int? index;
+  late int? index;
   Camera(int index, {Key? key}) : super(key: key) {
     this.index = index;
   }

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import './login.dart';
 import './mainScreen.dart';
 import './cardDetail.dart';
@@ -15,7 +14,6 @@ import 'package:firebase_core/firebase_core.dart';
 // void main() => runApp(MyApp());
 // void main() => runApp(Login());
 
-late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:http/http.dart' as http;
+import 'package:video_player/video_player.dart';
 import './script.dart';
+import './chewie_list_item.dart';
 
 // ignore: must_be_immutable
 class CompletedCardDetail extends StatefulWidget {
@@ -132,8 +134,16 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               height: 50,
               child: CupertinoButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => ChewiePlayer()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChewieListItem(
+                                looping: true,
+                                videoPlayerController:
+                                    VideoPlayerController.network(
+                                  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                                ),
+                              )));
                 },
                 child: const Text(
                   'Play Video',

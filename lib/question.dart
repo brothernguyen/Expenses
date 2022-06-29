@@ -23,14 +23,14 @@ class Question {
   List questions;
 
   Question({
-    @required this.id,
-    @required this.title,
-    @required this.description,
-    @required this.startDate,
-    @required this.endDate,
-    @required this.img,
-    @required this.isCompleted,
-    @required this.questions,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.startDate,
+    required this.endDate,
+    required this.img,
+    required this.isCompleted,
+    required this.questions,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,7 @@ class Question {
 }
 
 class SubQuestion {
-  String title;
-  QuestionType type;
-  List options;
+  late String title;
+  late QuestionType type;
+  late List options;
 }

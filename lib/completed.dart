@@ -7,7 +7,7 @@ import 'dart:convert';
 import './script.dart';
 
 class Completed extends StatefulWidget {
-  const Completed({Key key}) : super(key: key);
+  const Completed({Key? key}) : super(key: key);
 
   @override
   State<Completed> createState() => _CompletedState();

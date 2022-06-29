@@ -10,7 +10,7 @@ class PickImage extends StatefulWidget {
 }
 
 class _PickImageState extends State<PickImage> {
-  File _storedImage;
+  late File _storedImage;
 
   Future<void> takePicture() async {
     final imageFile = await ImagePicker()

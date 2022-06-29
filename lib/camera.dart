@@ -14,8 +14,8 @@ import 'api/firebase_api.dart';
 import 'widget/button_widget.dart';
 
 class Camera extends StatefulWidget {
-  int index;
-  Camera(int index, {Key key}) : super(key: key) {
+  int? index;
+  Camera(int index, {Key? key}) : super(key: key) {
     this.index = index;
   }
 
@@ -23,16 +23,16 @@ class Camera extends StatefulWidget {
   State<Camera> createState() => _CameraState();
 }
 
-String path;
+String? path;
 
 class _CameraState extends State<Camera> {
-  UploadTask task;
-  File file;
-  int index;
+  late UploadTask task;
+  File? file;
+  late int index;
 
   @override
   void initState() {
-    index = widget.index;
+    index = widget.index!;
     super.initState();
   }
 
@@ -45,7 +45,7 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     print('==>index: $index');
-    final fileName = file != null ? basename(file.path) : 'No File Selected';
+    final fileName = file != null ? basename(file!.path) : 'No File Selected';
 
     return Scaffold(
       appBar: AppBar(
@@ -91,18 +91,18 @@ class _CameraState extends State<Camera> {
     if (result == null) return;
     final path = result.files.single.path;
 
-    setState(() => file = File(path));
+    setState(() => file = File(path!));
   }
 
   Future uploadFile(BuildContext context) async {
     if (file == null) return;
 
-    final fileName = basename(file.path);
+    final fileName = basename(file!.path);
     final destination = '$fileName';
     var snapshot = null;
     String videoUrl = '';
 
-    task = FirebaseApi.uploadFile(destination, file);
+    task = FirebaseApi.uploadFile(destination, file!)!;
     setState(() {});
 
     if (task == null) return;
@@ -133,7 +133,7 @@ class _CameraState extends State<Camera> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final snap = snapshot.data;
-            final progress = snap.bytesTransferred / snap.totalBytes;
+            final progress = snap!.bytesTransferred / snap.totalBytes;
             final percentage = (progress * 100).toStringAsFixed(2);
 
             return Text(

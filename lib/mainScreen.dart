@@ -13,7 +13,7 @@ import './pickImage.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
-  MainScreen({Key key}) : super(key: key);
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   MainScreenState createState() {

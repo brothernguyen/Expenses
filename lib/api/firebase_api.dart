@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FirebaseApi {
-  static UploadTask uploadFile(String destination, File file) {
+  static UploadTask? uploadFile(String destination, File file) {
     try {
       final ref = FirebaseStorage.instance.ref(destination);
 
@@ -14,7 +14,7 @@ class FirebaseApi {
     }
   }
 
-  static UploadTask uploadBytes(String destination, Uint8List data) {
+  static UploadTask? uploadBytes(String destination, Uint8List data) {
     try {
       final ref = FirebaseStorage.instance.ref(destination);
 

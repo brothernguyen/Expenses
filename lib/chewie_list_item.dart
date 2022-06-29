@@ -3,7 +3,7 @@ import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 
 class ChewieListItem extends StatefulWidget {
-  const ChewieListItem({Key key}) : super(key: key);
+  const ChewieListItem({Key? key}) : super(key: key);
 
   @override
   State<ChewieListItem> createState() => _ChewieListItemState();

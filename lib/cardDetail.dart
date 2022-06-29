@@ -13,9 +13,9 @@ import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class CardDetail extends StatefulWidget {
-  Script item;
+  Script? item;
   VoidCallback refreshMainPage;
-  CardDetail(Script item, this.refreshMainPage, {Key key}) : super(key: key) {
+  CardDetail(Script item, this.refreshMainPage, {Key? key}) : super(key: key) {
     this.item = item;
     this.refreshMainPage = refreshMainPage;
   }
@@ -34,17 +34,17 @@ class CardDetailState extends State<CardDetail> {
   bool isDisplayDialog = true;
   bool isChecked = false;
   List _selected = [];
-  Script script;
+  Script? script;
   bool selectedChoice = true;
   List radioOptions = [];
 
   void initState() {
     super.initState();
-    script = widget.item;
+    script = widget.item!;
     //Radio button values
-    radioOptions = script.questions[4]['options'];
+    radioOptions = script!.questions[4]['options'];
     //Checkbox values
-    _selected = script.questions[5]['options'];
+    _selected = script!.questions[5]['options'];
   }
 
   @override
@@ -56,14 +56,14 @@ class CardDetailState extends State<CardDetail> {
 
   @override
   Widget build(BuildContext context) {
-    Script script = widget.item;
+    Script? script = widget.item;
     isDisplayDialog
         ? Future.delayed(
-            Duration.zero, () => displayDialog(context, script, true))
+            Duration.zero, () => displayDialog(context, script!, true))
         : "";
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text(script.title),
+            middle: Text(script!.title),
             trailing: IconButton(
               icon: const Icon(Icons.done_all),
               tooltip: 'Done',
@@ -77,7 +77,7 @@ class CardDetailState extends State<CardDetail> {
             ),
           )
         : AppBar(
-            title: Text(script.title),
+            title: Text(script!.title),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.done_all),
@@ -88,7 +88,7 @@ class CardDetailState extends State<CardDetail> {
                 },
               ),
             ],
-          );
+          ) as PreferredSizeWidget;
     return Scaffold(
       appBar: appBar,
       body: Center(
@@ -149,7 +149,7 @@ class CardDetailState extends State<CardDetail> {
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text(script.questions[index]['title']),
+              title: Text(script!.questions[index]['title']),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -162,7 +162,7 @@ class CardDetailState extends State<CardDetail> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Camera(script.id)),
+                          builder: (context) => Camera(script!.id)),
                     );
                   },
                   child: const Text(
@@ -183,14 +183,14 @@ class CardDetailState extends State<CardDetail> {
   // TEXT QUESTION
   //==========================================================
   Card textQuestion(int index) {
-    String defaultText = script.questions[2]['value'].toString();
+    String defaultText = script!.questions[2]['value'].toString();
     return Card(
       color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[index]['title']),
+            title: Text(script!.questions[index]['title']),
           ),
           Container(
             height: 50,
@@ -218,14 +218,14 @@ class CardDetailState extends State<CardDetail> {
   // NUMERIC QUESTION
   //==========================================================
   Card numericQuestion(int index) {
-    String defaultNumeric = script.questions[3]['value'].toString();
+    String defaultNumeric = script!.questions[3]['value'].toString();
     return Card(
       color: Color.fromARGB(255, 247, 246, 243),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[index]['title']),
+            title: Text(script!.questions[index]['title']),
           ),
           Container(
             height: 50,
@@ -256,7 +256,7 @@ class CardDetailState extends State<CardDetail> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[index]['title']),
+            title: Text(script!.questions[index]['title']),
           ),
           Column(
             // children: singleChoiceQuestionCard(script),
@@ -276,7 +276,7 @@ class CardDetailState extends State<CardDetail> {
               groupValue: option['selected'],
               title: Text(option["choice"]),
               onChanged: (value) =>
-                  setState(() => setSelectedChoice(option, value)),
+                  setState(() => setSelectedChoice(option, value!)),
             );
           },
         ).toList(),
@@ -302,7 +302,7 @@ class CardDetailState extends State<CardDetail> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text(script.questions[index]['title']),
+            title: Text(script!.questions[index]['title']),
           ),
           Column(children: [_createDataTable(index)]),
           const SizedBox(width: 8),
@@ -329,7 +329,7 @@ class CardDetailState extends State<CardDetail> {
             DataCell(Text(_selected[index]['option'])),
           ],
           selected: _selected[index]['selected'],
-          onSelectChanged: (bool selected) {
+          onSelectChanged: (bool? selected) {
             setState(() {
               _selected[index]['selected'] = selected;
             });

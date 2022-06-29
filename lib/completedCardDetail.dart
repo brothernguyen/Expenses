@@ -7,9 +7,9 @@ import './script.dart';
 
 // ignore: must_be_immutable
 class CompletedCardDetail extends StatefulWidget {
-  Script item;
+  Script? item;
   VoidCallback refreshCompletedPage;
-  CompletedCardDetail(Script item, this.refreshCompletedPage, {Key key})
+  CompletedCardDetail(Script item, this.refreshCompletedPage, {Key? key})
       : super(key: key) {
     this.item = item;
     this.refreshCompletedPage = refreshCompletedPage;
@@ -23,14 +23,14 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   bool isDisplayDialog = true;
   bool isChecked = false;
   List _selected = [];
-  Script script;
+  late Script script;
   bool selectedChoice = true;
   List radioOptions = [];
   final DBRef = FirebaseDatabase.instance.ref();
 
   void initState() {
     super.initState();
-    script = widget.item;
+    script = widget.item!;
     //Radio button values
     radioOptions = script.questions[4]['options'];
     //Checkbox values
@@ -39,10 +39,10 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
 
   @override
   Widget build(BuildContext context) {
-    Script script = widget.item;
+    Script? script = widget.item;
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text(script.title),
+            middle: Text(script!.title),
             automaticallyImplyLeading: true,
             leading: CupertinoNavigationBarBackButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -55,7 +55,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               },
             ),
           )
-        : AppBar(title: Text(script.title), actions: <Widget>[
+        : AppBar(title: Text(script!.title), actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.playlist_remove),
               color: Colors.white,
@@ -63,7 +63,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
                 resetData(script);
               },
             ),
-          ]);
+          ]) as PreferredSizeWidget;
 
     return Scaffold(
       appBar: appBar,
@@ -131,10 +131,10 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               width: 240,
               height: 50,
               child: CupertinoButton(
-                // onPressed: () {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) => ChewiePlayer()));
-                // },
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ChewiePlayer()));
+                },
                 child: const Text(
                   'Play Video',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -291,7 +291,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             DataCell(Text(_selected[index]['option'])),
           ],
           selected: _selected[index]['selected'],
-          onSelectChanged: (bool selected) {}));
+          onSelectChanged: (bool? selected) {}));
     }
     return rows;
   }

@@ -11,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 class Login extends StatefulWidget {
   final VoidCallback showRegisterPage;
 
-  const Login({Key key, this.showRegisterPage}) : super(key: key);
+  const Login({Key? key, required this.showRegisterPage}) : super(key: key);
   @override
   State<Login> createState() => _LoginState();
 }
@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text(e.message),
+                  Text(e.message!),
                 ],
               ),
             ),

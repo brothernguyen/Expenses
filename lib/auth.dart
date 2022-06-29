@@ -3,7 +3,7 @@ import 'package:flutter_complete_guide/login.dart';
 import './signup.dart';
 
 class Auth extends StatefulWidget {
-  const Auth({Key key}) : super(key: key);
+  const Auth({Key? key}) : super(key: key);
 
   @override
   State<Auth> createState() => _AuthState();

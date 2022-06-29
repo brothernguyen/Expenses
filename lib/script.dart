@@ -23,14 +23,14 @@ class Script {
   List questions;
 
   Script({
-    @required this.id,
-    @required this.title,
-    @required this.description,
-    @required this.startDate,
-    @required this.endDate,
-    @required this.img,
-    @required this.isCompleted,
-    @required this.questions,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.startDate,
+    required this.endDate,
+    required this.img,
+    required this.isCompleted,
+    required this.questions,
   });
 
   factory Script.fromJson(Map<String, dynamic> json) {
@@ -51,8 +51,7 @@ class SubQuestion {
   String type;
   List<String> options;
 
-  SubQuestion(
-      {@required this.title, @required this.type, @required this.options});
+  SubQuestion({required this.title, required this.type, required this.options});
   factory SubQuestion.fromJson(Map<String, dynamic> json) {
     return SubQuestion(
         title: json['title'] as String,

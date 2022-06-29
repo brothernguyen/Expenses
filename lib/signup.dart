@@ -9,7 +9,7 @@ import 'package:flutter_complete_guide/mainScreen.dart';
 class SignUp extends StatefulWidget {
   final VoidCallback showLoginPage;
 
-  const SignUp({Key key, this.showLoginPage}) : super(key: key);
+  const SignUp({Key? key, required this.showLoginPage}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp> {
         showSignupDialog(
             'Signup success', 'New account created with email: $email', true);
       } on FirebaseAuthException catch (e) {
-        showSignupDialog('Signup Failed', e.message, false);
+        showSignupDialog('Signup Failed', e.message!, false);
       }
     } else {
       print('Wrong password confirmation!');

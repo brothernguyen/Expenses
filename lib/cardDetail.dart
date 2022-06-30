@@ -104,7 +104,6 @@ class CardDetailState extends State<CardDetail> {
                 {
                   return textQuestion(index);
                 }
-                break;
 
               case "NUMERIC":
                 {
@@ -369,10 +368,31 @@ class CardDetailState extends State<CardDetail> {
 
     // Script status
     await DBRef.child('scripts/$id/')
-        .update({'isCompleted': true}).then((_) => widget.refreshMainPage());
+        .update({'isCompleted': true})
+        .then((_) => widget.refreshMainPage())
+        .then((_) => Navigator.of(context).pop());
+    submitSuccessDialog(context);
   }
 
-  //DIALOG
+  //SUBMIT SUCCESS DIALOG
+  //==========================================================
+  submitSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Submit Success!'),
+        content: const Text('Please review this script on Completed tab'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  //MAIN DIALOG
   //==========================================================
   displayDialog(BuildContext context, Script script, bool isStartMessage) {
     showDialog(

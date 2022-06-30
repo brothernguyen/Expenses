@@ -20,7 +20,6 @@ class _ChewieListItemState extends State<ChewieListItem> {
   @override
   void initState() {
     super.initState();
-
     _chewieController = ChewieController(
         videoPlayerController: widget.videoPlayerController,
         aspectRatio: 16 / 9,
@@ -31,7 +30,8 @@ class _ChewieListItemState extends State<ChewieListItem> {
           print('==>: $errorMessage');
           return Center(
             child: Text(
-              errorMessage,
+              // errorMessage,
+              'Video URL invalid!',
               style: TextStyle(color: Colors.white),
             ),
           );

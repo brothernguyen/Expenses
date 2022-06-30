@@ -42,6 +42,7 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   @override
   Widget build(BuildContext context) {
     Script? script = widget.item;
+
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text(script!.title),
@@ -82,7 +83,6 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
                 {
                   return textQuestion(index);
                 }
-                break;
 
               case "NUMERIC":
                 {
@@ -120,6 +120,8 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   // VIDEO TYPE
   //==========================================================
   Card videoQuestionCard(int index) {
+    String? videoUrl = widget.item?.videoUrl;
+    print('==>: $videoUrl');
     return Card(
       color: Color.fromARGB(255, 247, 246, 243),
       child: Container(
@@ -134,6 +136,9 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
               height: 50,
               child: CupertinoButton(
                 onPressed: () {
+                  if (videoUrl == null || videoUrl.isEmpty) {
+                    return;
+                  }
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -141,7 +146,8 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
                                 looping: true,
                                 videoPlayerController:
                                     VideoPlayerController.network(
-                                  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                                  //'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                                  videoUrl,
                                 ),
                               )));
                 },

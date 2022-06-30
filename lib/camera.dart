@@ -25,7 +25,7 @@ class Camera extends StatefulWidget {
 String? path;
 
 class _CameraState extends State<Camera> {
-  late UploadTask task;
+  UploadTask? task;
   File? file;
   late int index;
 
@@ -75,7 +75,7 @@ class _CameraState extends State<Camera> {
                 },
               ),
               SizedBox(height: 20),
-              task != null ? buildUploadStatus(task) : Container(),
+              task != null ? buildUploadStatus(task!) : Container(),
             ],
           ),
         ),
@@ -106,7 +106,7 @@ class _CameraState extends State<Camera> {
 
     if (task == null) return;
     try {
-      snapshot = await task.whenComplete(() {});
+      snapshot = await task?.whenComplete(() {});
       videoUrl = await snapshot.ref.getDownloadURL();
       print('Download-Link: $videoUrl');
     } catch (error) {

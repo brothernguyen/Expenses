@@ -21,17 +21,18 @@ class Script {
   String img;
   bool isCompleted;
   List questions;
+  String videoUrl;
 
-  Script({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.startDate,
-    required this.endDate,
-    required this.img,
-    required this.isCompleted,
-    required this.questions,
-  });
+  Script(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.startDate,
+      required this.endDate,
+      required this.img,
+      required this.isCompleted,
+      required this.questions,
+      required this.videoUrl});
 
   factory Script.fromJson(Map<String, dynamic> json) {
     return Script(
@@ -42,7 +43,8 @@ class Script {
         endDate: json['endDate'] as String,
         img: json['img'] as String,
         isCompleted: json['isCompleted'] as bool,
-        questions: json['questions']);
+        questions: json['questions'],
+        videoUrl: json['videoUrl']);
   }
 }
 

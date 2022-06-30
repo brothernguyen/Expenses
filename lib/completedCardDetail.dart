@@ -50,12 +50,16 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
             leading: CupertinoNavigationBarBackButton(
               onPressed: () => Navigator.of(context).pop(),
             ),
-            trailing: IconButton(
-              icon: const Icon(Icons.playlist_remove),
-              color: Colors.blueAccent,
-              onPressed: () {
-                resetData(script);
-              },
+            trailing: Card(
+              color: Color.fromARGB(254, 248, 248, 248),
+              elevation: 0,
+              child: IconButton(
+                icon: const Icon(Icons.playlist_remove),
+                color: Colors.blueAccent,
+                onPressed: () {
+                  resetData(script);
+                },
+              ),
             ),
           )
         : AppBar(title: Text(script!.title), actions: <Widget>[

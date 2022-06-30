@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:chewie/chewie.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 
@@ -40,11 +43,27 @@ class _ChewieListItemState extends State<ChewieListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Chewie(
-          controller: _chewieController,
+    final PreferredSizeWidget appBar = Platform.isIOS
+        ? CupertinoNavigationBar(
+            middle: Text('Video Player'),
+            automaticallyImplyLeading: true,
+            leading: CupertinoNavigationBarBackButton(
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          )
+        : AppBar(title: Text('Video Player'), actions: <Widget>[])
+            as PreferredSizeWidget;
+
+    return Scaffold(
+      appBar: appBar,
+      body: Center(
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Chewie(
+              controller: _chewieController,
+            ),
+          ),
         ),
       ),
     );

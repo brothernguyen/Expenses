@@ -23,9 +23,10 @@ class _ChewieListItemState extends State<ChewieListItem> {
   @override
   void initState() {
     super.initState();
+
     _chewieController = ChewieController(
         videoPlayerController: widget.videoPlayerController,
-        aspectRatio: 16 / 9,
+        aspectRatio: 9 / 16,
         autoInitialize: true,
         autoPlay: true,
         looping: widget.looping,

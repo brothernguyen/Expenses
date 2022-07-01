@@ -366,5 +366,24 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
         .update({'isCompleted': false})
         .then((_) => widget.refreshCompletedPage())
         .then((_) => Navigator.of(context).pop());
+    resetDataSuccessDialog(context);
+  }
+
+  //RESET DATA SUCCESS DIALOG
+  //==========================================================
+  resetDataSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Reset Data Success!'),
+        content: const Text('This script has been moved to Active tab'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 }

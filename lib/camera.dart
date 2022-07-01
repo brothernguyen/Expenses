@@ -58,7 +58,7 @@ class _CameraState extends State<Camera> {
             children: [
               ButtonWidget(
                 text: 'Start Recording',
-                icon: Icons.attach_file,
+                icon: Icons.video_camera_back,
                 onClicked: () {
                   Navigator.push(
                     context,

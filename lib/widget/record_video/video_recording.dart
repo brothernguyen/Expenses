@@ -61,20 +61,29 @@ class _VideoRecordingState extends State<VideoRecording> {
         ),
       );
     } else {
-      return Center(
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            CameraPreview(_cameraController),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: FloatingActionButton(
-                backgroundColor: Colors.red,
-                child: Icon(_isRecording ? Icons.stop : Icons.circle),
-                onPressed: () => _recordVideo(),
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Video Recording'),
+          centerTitle: true,
+          elevation: 0,
+          // backgroundColor: Colors.black26,
+        ),
+        extendBodyBehindAppBar: true,
+        body: Center(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              CameraPreview(_cameraController),
+              Padding(
+                padding: const EdgeInsets.all(25),
+                child: FloatingActionButton(
+                  backgroundColor: Colors.red,
+                  child: Icon(_isRecording ? Icons.stop : Icons.circle),
+                  onPressed: () => _recordVideo(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }

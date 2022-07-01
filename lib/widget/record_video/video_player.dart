@@ -36,6 +36,7 @@ class _VideoPageState extends State<VideoPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Preview'),
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.black26,
         actions: [

@@ -11,6 +11,7 @@ import 'package:path/path.dart';
 
 import 'api/firebase_api.dart';
 import 'widget/button_widget.dart';
+import 'widget/record_video/video_recording.dart';
 
 class Camera extends StatefulWidget {
   late int? index;
@@ -43,7 +44,6 @@ class _CameraState extends State<Camera> {
 
   @override
   Widget build(BuildContext context) {
-    print('==>index: $index');
     final fileName = file != null ? basename(file!.path) : 'No File Selected';
 
     return Scaffold(
@@ -56,6 +56,17 @@ class _CameraState extends State<Camera> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              ButtonWidget(
+                text: 'Start Recording',
+                icon: Icons.attach_file,
+                onClicked: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => VideoRecording()),
+                  );
+                },
+              ),
+              SizedBox(height: 80),
               ButtonWidget(
                 text: 'Select File',
                 icon: Icons.attach_file,

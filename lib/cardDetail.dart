@@ -165,7 +165,7 @@ class CardDetailState extends State<CardDetail> {
                     );
                   },
                   child: const Text(
-                    'Start Recording',
+                    'Choose Video',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                   ),
                   color: Colors.deepOrange,

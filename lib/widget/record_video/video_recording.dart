@@ -1,9 +1,12 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as Path;
 import './video_player.dart';
 
 class VideoRecording extends StatefulWidget {
-  const VideoRecording({Key? key}) : super(key: key);
+  final Function callback;
+
+  VideoRecording({Key? key, required this.callback}) : super(key: key);
 
   @override
   _VideoRecordingState createState() => _VideoRecordingState();
@@ -12,6 +15,7 @@ class VideoRecording extends StatefulWidget {
 class _VideoRecordingState extends State<VideoRecording> {
   bool _isLoading = true;
   bool _isRecording = false;
+  String _recordedVideo = '';
   late CameraController _cameraController;
 
   @override
@@ -38,10 +42,14 @@ class _VideoRecordingState extends State<VideoRecording> {
   _recordVideo() async {
     if (_isRecording) {
       final file = await _cameraController.stopVideoRecording();
+      _recordedVideo = Path.basename(file.path);
       setState(() => _isRecording = false);
       final route = MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (_) => VideoPage(filePath: file.path),
+        builder: (_) => VideoPage(
+          filePath: file.path,
+          acceptRecordedVideo: saveRecordedVideo,
+        ),
       );
       Navigator.push(context, route);
     } else {
@@ -49,6 +57,11 @@ class _VideoRecordingState extends State<VideoRecording> {
       await _cameraController.startVideoRecording();
       setState(() => _isRecording = true);
     }
+  }
+
+  saveRecordedVideo() {
+    widget.callback(_recordedVideo);
+    Navigator.pop(context);
   }
 
   @override

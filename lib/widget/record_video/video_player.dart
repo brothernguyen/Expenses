@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:video_player/video_player.dart';
 
+// ignore: must_be_immutable
 class VideoPage extends StatefulWidget {
   final String filePath;
+  VoidCallback acceptRecordedVideo;
 
-  const VideoPage({Key? key, required this.filePath}) : super(key: key);
+  VideoPage(
+      {Key? key, required this.filePath, required this.acceptRecordedVideo})
+      : super(key: key);
 
   @override
   _VideoPageState createState() => _VideoPageState();
@@ -31,8 +35,6 @@ class _VideoPageState extends State<VideoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final destination = basename(widget.filePath);
-    print('==>filePath: $destination');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Preview'),
@@ -43,7 +45,8 @@ class _VideoPageState extends State<VideoPage> {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              print('do something with the file');
+              widget.acceptRecordedVideo();
+              Navigator.pop(context);
             },
           )
         ],

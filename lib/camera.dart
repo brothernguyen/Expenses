@@ -27,7 +27,7 @@ String? path;
 
 class _CameraState extends State<Camera> {
   UploadTask? task;
-  File? file;
+  File? selectedVideoFile;
   late int index;
 
   @override
@@ -39,12 +39,14 @@ class _CameraState extends State<Camera> {
   @override
   void dispose() {
     super.dispose();
-    file = null;
+    selectedVideoFile = null;
   }
 
   @override
   Widget build(BuildContext context) {
-    final fileName = file != null ? basename(file!.path) : 'No File Selected';
+    final fileName = selectedVideoFile != null
+        ? basename(selectedVideoFile!.path)
+        : 'No File Selected';
 
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +64,10 @@ class _CameraState extends State<Camera> {
                 onClicked: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => VideoRecording()),
+                    MaterialPageRoute(
+                        builder: (context) => VideoRecording(
+                              callback: (value) => print(value),
+                            )),
                   );
                 },
               ),
@@ -82,7 +87,7 @@ class _CameraState extends State<Camera> {
                 text: 'Upload File',
                 icon: Icons.cloud_upload_outlined,
                 onClicked: () {
-                  file != null ? uploadFile(context) : null;
+                  selectedVideoFile != null ? uploadFile(context) : null;
                 },
               ),
               SizedBox(height: 20),
@@ -101,18 +106,18 @@ class _CameraState extends State<Camera> {
     if (result == null) return;
     final path = result.files.single.path;
 
-    setState(() => file = File(path!));
+    setState(() => selectedVideoFile = File(path!));
   }
 
   Future uploadFile(BuildContext context) async {
-    if (file == null) return;
+    if (selectedVideoFile == null) return;
 
-    final fileName = basename(file!.path);
+    final fileName = basename(selectedVideoFile!.path);
     final destination = '$fileName';
     var snapshot = null;
     String videoUrl = '';
 
-    task = FirebaseApi.uploadFile(destination, file!)!;
+    task = FirebaseApi.uploadFile(destination, selectedVideoFile!)!;
     setState(() {});
 
     if (task == null) return;
@@ -133,7 +138,7 @@ class _CameraState extends State<Camera> {
       await DBRef.child('scripts/$id/').update({'videoUrl': videoUrl});
 
       setState(() {
-        file = null;
+        selectedVideoFile = null;
       });
     }
   }

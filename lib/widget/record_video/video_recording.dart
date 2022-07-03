@@ -42,7 +42,8 @@ class _VideoRecordingState extends State<VideoRecording> {
   _recordVideo() async {
     if (_isRecording) {
       final file = await _cameraController.stopVideoRecording();
-      _recordedVideo = Path.basename(file.path);
+      // _recordedVideo = Path.basename(file.path);
+      _recordedVideo = file.path;
       setState(() => _isRecording = false);
       final route = MaterialPageRoute(
         fullscreenDialog: true,

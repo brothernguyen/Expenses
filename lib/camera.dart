@@ -42,6 +42,10 @@ class _CameraState extends State<Camera> {
     selectedVideoFile = null;
   }
 
+  void recordedVideo(video) {
+    setState(() => selectedVideoFile = File(video));
+  }
+
   @override
   Widget build(BuildContext context) {
     final fileName = selectedVideoFile != null
@@ -66,7 +70,7 @@ class _CameraState extends State<Camera> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => VideoRecording(
-                              callback: (value) => print(value),
+                              callback: (value) => recordedVideo(value),
                             )),
                   );
                 },
@@ -105,15 +109,17 @@ class _CameraState extends State<Camera> {
 
     if (result == null) return;
     final path = result.files.single.path;
-
     setState(() => selectedVideoFile = File(path!));
   }
 
+  //Upload selected/recorded video to Firebase storage
+  //====================================================
   Future uploadFile(BuildContext context) async {
     if (selectedVideoFile == null) return;
 
     final fileName = basename(selectedVideoFile!.path);
     final destination = '$fileName';
+    print('==>destination: $destination');
     var snapshot = null;
     String videoUrl = '';
 

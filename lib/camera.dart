@@ -29,6 +29,7 @@ class _CameraState extends State<Camera> {
   UploadTask? task;
   File? selectedVideoFile;
   late int index;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -75,7 +76,16 @@ class _CameraState extends State<Camera> {
                   );
                 },
               ),
-              SizedBox(height: 80),
+              SizedBox(
+                height: 80,
+                child: isLoading
+                    ? CupertinoActivityIndicator(
+                        animating: isLoading,
+                        radius: 14.0,
+                        color: Color.fromARGB(255, 79, 81, 84),
+                      )
+                    : null,
+              ),
               ButtonWidget(
                 text: 'Select File',
                 icon: Icons.attach_file,
@@ -124,11 +134,18 @@ class _CameraState extends State<Camera> {
 
     task = FirebaseApi.uploadFile(destination, selectedVideoFile!)!;
 
-    setState(() {});
+    //setState(() {});
+    setState(() {
+      isLoading = true;
+    });
 
     if (task == null) return;
     try {
-      snapshot = await task?.whenComplete(() {});
+      snapshot = await task?.whenComplete(() {
+        setState(() {
+          isLoading = false;
+        });
+      });
       videoUrl = await snapshot.ref.getDownloadURL();
       print('Download-Link: $videoUrl');
     } catch (error) {

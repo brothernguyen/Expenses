@@ -30,6 +30,16 @@ class _ChewieListItemState extends State<ChewieListItem> {
         autoInitialize: true,
         autoPlay: true,
         looping: widget.looping,
+        // placeholder: Container(
+        //   color: Color.fromRGBO(255, 255, 255, 1.0),
+        //   child: Container(
+        //     child: Center(
+        //         child: CircularProgressIndicator(
+        //       valueColor: new AlwaysStoppedAnimation<Color>(
+        //           Color.fromARGB(221, 202, 76, 13)),
+        //     )),
+        //   ),
+        // ),
         errorBuilder: (context, errorMessage) {
           print('==>: $errorMessage');
           return Center(

@@ -119,11 +119,11 @@ class _CameraState extends State<Camera> {
 
     final fileName = basename(selectedVideoFile!.path);
     final destination = '$fileName';
-    print('==>destination: $destination');
     var snapshot = null;
     String videoUrl = '';
 
     task = FirebaseApi.uploadFile(destination, selectedVideoFile!)!;
+
     setState(() {});
 
     if (task == null) return;

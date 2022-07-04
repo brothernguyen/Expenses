@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -6,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
 import './script.dart';
 import './chewie_list_item.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 // ignore: must_be_immutable
 class CompletedCardDetail extends StatefulWidget {
@@ -125,7 +127,6 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   //==========================================================
   Card videoQuestionCard(int index) {
     String? videoUrl = widget.item?.videoUrl;
-    print('==>: $videoUrl');
     return Card(
       color: Color.fromARGB(255, 247, 246, 243),
       child: Container(
@@ -331,10 +332,23 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
     }
   }
 
+  deleteVideoFromStorage() async {
+    final vidUrl = widget.item?.videoUrl;
+    if (vidUrl == null || vidUrl.isEmpty) return;
+    try {
+      await FirebaseStorage.instance.refFromURL(vidUrl).delete();
+    } on FirebaseException catch (e) {
+      // Caught an exception from Firebase.
+      print("==> Delete failed with error: '${e.code}': ${e.message}");
+    }
+  }
+
   void resetData(Script item) async {
     var id = item.id.toString();
+
     resetSelectedChoice();
     resetMultipleChoice();
+    deleteVideoFromStorage();
 
     // Video question
     await DBRef.child('scripts/$id/').update({'videoUrl': ""});

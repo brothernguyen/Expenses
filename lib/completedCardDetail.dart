@@ -26,6 +26,7 @@ class CompletedCardDetail extends StatefulWidget {
 class _CompletedCardDetailState extends State<CompletedCardDetail> {
   bool isDisplayDialog = true;
   bool isChecked = false;
+  bool isLoading = false;
   List _selected = [];
   late Script script;
   bool selectedChoice = true;
@@ -77,48 +78,59 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
     return Scaffold(
       appBar: appBar,
       body: Center(
-        child: ListView.builder(
-          itemCount: script.questions.length,
-          itemBuilder: (context, index) {
-            switch (script.questions[index]['type']) {
-              case "VIDEO":
-                {
-                  return videoQuestionCard(index);
-                }
-              case "TEXT":
-                {
-                  return textQuestion(index);
-                }
+        child: isLoading
+            ? SizedBox(
+                height: 80,
+                child: isLoading
+                    ? CupertinoActivityIndicator(
+                        animating: isLoading,
+                        radius: 14.0,
+                        color: Color.fromARGB(255, 79, 81, 84),
+                      )
+                    : null,
+              )
+            : ListView.builder(
+                itemCount: script.questions.length,
+                itemBuilder: (context, index) {
+                  switch (script.questions[index]['type']) {
+                    case "VIDEO":
+                      {
+                        return videoQuestionCard(index);
+                      }
+                    case "TEXT":
+                      {
+                        return textQuestion(index);
+                      }
 
-              case "NUMERIC":
-                {
-                  return numericQuestion(index);
-                }
+                    case "NUMERIC":
+                      {
+                        return numericQuestion(index);
+                      }
 
-              case "SINGLE_CHOICE":
-                {
-                  return singleChoice(index);
-                }
-                break;
+                    case "SINGLE_CHOICE":
+                      {
+                        return singleChoice(index);
+                      }
+                      break;
 
-              case "MULTIPLE_CHOICE":
-                {
-                  return multiChoice(index);
-                }
-                break;
+                    case "MULTIPLE_CHOICE":
+                      {
+                        return multiChoice(index);
+                      }
+                      break;
 
-              default:
-                {
-                  //print("Invalid choice");
-                }
-                break;
-            }
-            return Container(
-              height: 0,
-              width: 0,
-            );
-          },
-        ),
+                    default:
+                      {
+                        //print("Invalid choice");
+                      }
+                      break;
+                  }
+                  return Container(
+                    height: 0,
+                    width: 0,
+                  );
+                },
+              ),
       ),
     );
   }
@@ -344,6 +356,9 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
   }
 
   void resetData(Script item) async {
+    setState(() {
+      isLoading = true;
+    });
     var id = item.id.toString();
 
     resetSelectedChoice();
@@ -379,6 +394,11 @@ class _CompletedCardDetailState extends State<CompletedCardDetail> {
     await DBRef.child('scripts/$id/')
         .update({'isCompleted': false})
         .then((_) => widget.refreshCompletedPage())
+        .then((value) => {
+              setState(() {
+                isLoading = false;
+              })
+            })
         .then((_) => Navigator.of(context).pop());
     resetDataSuccessDialog(context);
   }
